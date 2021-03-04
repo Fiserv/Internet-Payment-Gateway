@@ -1,5 +1,5 @@
 {
-  "title": "IPG",
+  "title": "Internet Payment Gateway",
   "name": "IPG",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/tomeck/transactionenrichmentstoplight/main/docs/carat_logo.png",
@@ -56,7 +56,7 @@
   "product": {
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/tomeck/transactionenrichmentstoplight/main/docs/carat_logo.png",
-    "description": "IPG makes it easier for merchants to access omnichannel services from a single point of connection. That includes access to solutions for global acquiring, payment methods, commerce channels, payouts, prepaid payments, B2B payments, payments optimization, security and fraud, and data insights.",
+    "description": "Internet Payment Gateway makes it easier for merchants to access omnichannel services from a single point of connection. That includes access to solutions for global acquiring, payment methods, commerce channels, payouts, prepaid payments, B2B payments, payments optimization, security and fraud, and data insights.",
     "apiSpecification": "/v1/apis",
     "layout": "/v1/layout",
     "documentation": "/v1/docs"
