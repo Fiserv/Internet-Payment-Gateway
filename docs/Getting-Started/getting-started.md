@@ -55,6 +55,9 @@ Please refer our [API page](../api?type=post&path=/payments/v1/auths) to know ab
 - Acount Verification
 - Authentication
 - Payment Token
+- Google Token
+
+
 
 
 
