@@ -1,0 +1,979 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: First Data Global Payment API Specification
+  description: |
+    First Data Global API for payment features
+    - Release 6.2.0 - June 12, 18
+host: api-qa.payeezy.com
+basePath: /globalAPi
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+x-header-api-key: 'pG3wO316dzWA4SapZeME1Qmxc9N3Kokp'
+x-header-api-secret: '3AqcUwvjSeG5GRAw'
+paths:
+  /v1/payments:
+    post:
+      tags:
+        - Payment
+      x-proxy-name: 'Generate Primary Transaction'
+      x-region: [EMEA, LATAM, APAC, NORTH_AMERICA]
+      x-reseller: [BAMS, TELECASH, ALL]
+      x-industry: [AIRLINE, CAR_RENTAL, LODGING]
+      summary: Primary transaction Generation
+      description: Use this to originate a financial transaction, like a sale, authorization, or credit.
+      operationId: primaryPaymentTransaction
+      parameters:
+        - $ref: '#/parameters/ContentTypeParam'
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/ClientRequestIdParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/MessageSignatureParam'
+        - name: payload
+          in: body
+          description: Primary Transaction request
+          required: true
+          schema:
+            $ref: '#/definitions/PrimaryTransaction'
+      responses:
+        200:
+          description: Success response
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthenticated'
+        403:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        409:
+          $ref: '#/responses/GatewayDeclined'
+        422:
+          $ref: '#/responses/EndpointDeclined'
+        500:
+          $ref: '#/responses/ServerError'
+        502:
+          $ref: '#/responses/EndpointCommunicationError'
+  /v1/payments/{transaction-id}/void:
+    post:
+      tags:
+        - Payment
+      x-proxy-name: 'Void a Transaction'
+      summary: Void transaction
+      description: This is used to reverse a financial transaction such as Postauth, Return, Preauth, or Sale.
+      parameters:
+        - $ref: '#/parameters/ContentTypeParam'
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/ClientRequestIdParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/MessageSignatureParam'
+        - $ref: '#/parameters/TransactionIdParam'
+      responses:
+        200:
+          description: Success response
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthenticated'
+        403:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        409:
+          $ref: '#/responses/GatewayDeclined'
+        422:
+          $ref: '#/responses/EndpointDeclined'
+        500:
+          $ref: '#/responses/ServerError'
+        502:
+          $ref: '#/responses/EndpointCommunicationError'
+  /v1/payments/{transaction-id}/return:
+    post:
+      tags:
+        - Payment
+      x-proxy-name: 'Return/Refund'
+      summary: Return/Refund transaction
+      description: Use this for returns and partial returns.
+      parameters:
+        - $ref: '#/parameters/ContentTypeParam'
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/ClientRequestIdParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/MessageSignatureParam'
+        - $ref: '#/parameters/TransactionIdParam'
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SecondaryTransaction'
+      responses:
+        200:
+          description: Success response
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthenticated'
+        403:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        409:
+          $ref: '#/responses/GatewayDeclined'
+        422:
+          $ref: '#/responses/EndpointDeclined'
+        500:
+          $ref: '#/responses/ServerError'
+        502:
+          $ref: '#/responses/EndpointCommunicationError'
+  /v1/payments/{transaction-id}/postauth:
+    post:
+      tags:
+        - Payment
+      x-proxy-name: 'Post Authorization Capture'
+      summary: Postauth transaction
+      description: Use this to capture/complete a preauth transaction. Partial postauths are allowed.
+      parameters:
+        - $ref: '#/parameters/ContentTypeParam'
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/ClientRequestIdParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/MessageSignatureParam'
+        - $ref: '#/parameters/TransactionIdParam'
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SecondaryTransaction'
+      responses:
+        200:
+          description: Success response
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthenticated'
+        403:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        409:
+          $ref: '#/responses/GatewayDeclined'
+        422:
+          $ref: '#/responses/EndpointDeclined'
+        500:
+          $ref: '#/responses/ServerError'
+        502:
+          $ref: '#/responses/EndpointCommunicationError'
+#-------------------------------------------------------------------------------
+# HTTP Response Models
+#-------------------------------------------------------------------------------
+responses:
+  BadRequest:
+    description: The request cannot be validated
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  Unauthenticated:
+    description: Not authenticated/wrong credentials
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  Unauthorized:
+    description: Unauthorized request
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  NotFound:
+    description: The requested resource doesn't exist.
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  GatewayDeclined:
+    description: The merchant settings on the Gateway do not support this action.
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  EndpointDeclined:
+    description: The endpoint declined the transaction.
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  ServerError:
+    description: An unexpected internal server error occurred.
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+  EndpointCommunicationError:
+    description: Problem communicating with the endpoint
+    schema:
+      $ref: '#/definitions/TransactionResponse'
+#-------------------------------------------------------------------------------
+# Parameter Models
+#-------------------------------------------------------------------------------
+parameters:
+  ContentTypeParam:
+    description: This is used to indicate the media type of the resource.
+    name: Content-Type
+    type: string
+    in: header
+    required: true
+    enum: ['application/json']
+    default: 'application/json'
+  ApiKeyParam:
+    description: Developer App API key. This is used for API authentication. Keys are provided at the time of merchant boarding.
+    name: Api-Key
+    type: string
+    in: header
+    required: true
+  TimestampParam:
+    description: Epoch timestamp in milliseconds when a request is initiated at the client system. This is used for Message Signature generation and time limit.
+    name: Timestamp
+    type: integer
+    in: header
+    required: true
+    format: int64
+  MessageSignatureParam:
+    description: The Message Signature is used to ensure request authenticity and integrity.
+    name: Message-Signature
+    type: string
+    in: header
+    required: true
+  ClientRequestIdParam:
+    description: |
+      Client-generated ID for request tracking, signature generation, and idempotency control.
+      Unique per request. 128-bit UUID format recommended. Example '30dd879c-ee2f-11db-8314-0800200c9a66'
+    name: Client-Request-Id
+    type: string
+    maxLength: 32
+    in: header
+    required: true
+  TransactionIdParam:
+    description: Identifies the primary transaction
+    name: transaction-id
+    type: string
+    in: path
+    required: true
+  RequestUUID:
+    description: UUID for request tracking, unique per request. It will be generated in Rest API layer if not provided.
+    name: REQUEST_UUID
+    type: string
+    in: header
+    required: false
+  AppIdParam:
+    description: Developer App ID for auditing
+    name: App-Id
+    type: string
+    in: header
+    required: true
+  AuthTypeParam:
+    description: The type of the authorization entity
+    name: Authorization-Type
+    type: string
+    enum: ['STORE_ID', 'HIERARCHY_NODE_ID']
+    in: header
+    required: false
+  AuthIdParam:
+    description: The value of the authorization entity
+    name: Authorization-Id
+    type: string
+    in: header
+    required: false
+  AuthTypeQueryParam:
+    description: The type of the authorization entity as a query parameter
+    name: authorizationType
+    type: string
+    enum: ['STORE_ID', 'HIERARCHY_NODE_ID']
+    in: query
+    required: false
+  AuthIdQueryParam:
+    description: The value of authorization entity as a query parameter
+    name: authorizationId
+    type: string
+    in: query
+    required: false
+#------------------------------
+# DEFINTIONS
+#------------------------------
+definitions:
+  AccessTokenResponse:
+    description: Response from Access token generation call
+    type: object
+    properties:
+      accessToken:
+        description: Access token for authorization
+        type: string
+        example: 'Rft3dqrs56Blirls56a'
+      clientRequestId:
+        description: Echoes back the value in the Request header for tracking
+        type: string
+        example: '30dd879c-ee2f-11db-8314-0800200c9a66'
+      apiTraceId:
+        description: Request identifier in API, can be used to request logs from the support
+        type: string
+        example: '1231234135'
+      transactionStatus:
+        description: Transaction status. If it's anything other than 'APPROVED', please refer to 400s HTTP error codes or decline. See Error object for details.
+        type: string
+        enum: [APPROVED, VALIDATION_FAILED, DECLINED]
+      error:
+        $ref: '#/definitions/Error'
+    example:
+      clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+      apiTraceId: '124lj124jl124j'
+      accessToken: 'lwekjfewfj'
+      transactionStatus: 'APPROVED'
+  TransactionResponse:
+    description: This is the common object for primary and secondary payment requests
+    type: object
+    properties:
+      clientRequestId:
+        description: Echoes back the value in the Request header
+        type: string
+        example: '30dd879c-ee2f-11db-8314-0800200c9a66'
+      apiTraceId:
+        description: Echoes back the value in the Request header
+        type: string
+        example: '2132352352112454'
+      ipgTransactionId:  #mapped to ipgTransactionId
+        description:  The Response Transaction ID
+        type: string
+        example: '838916029301'
+      orderId:
+        description: Client Order ID if supplied by client, otherwise the Order ID
+        type: string
+        example: '123456'
+      transactionType:
+        description: The type of the transaction performed.
+        type: string
+        example: 'SALE'
+      authorizationCode:
+        description: The processor approval code for compliance.
+        type: string
+        example: 'A1B2C3'
+      avsResponse:
+        description: The processor address validation response for compliance.
+        type: string
+        example: 'PPX'
+      securityCodeResponse:
+        description: The processor card verification validation response for compliance.
+        type: string
+        example: 'X'
+      brand:
+        description: Card brand of the payment instrument
+        type: string
+        example: 'CABAL_ARGENTINA'
+      country: 
+        description: country of the card issuer   
+        type: string
+        example: 'ARG'
+      terminalId:
+        description: The terminal that is processing the transaction
+        type: string
+        example: '123456'
+      clientTransactionId:
+        description: The unique client Transaction ID from the Request header, if supplied
+        type: string
+        example: 'lsk23532djljff3'
+      transactionTime:  #tdate in ipg - transaction_tag in our v1
+        description: The transaction time in seconds since Epoch
+        type: integer
+        format: int64
+        example: '1518811817'
+      approvedAmount:
+        $ref: '#/definitions/Amount'
+      transactionStatus:
+        description: APPROVED/WAITING is returned by endpoints.  VALIDATION_FAILED/DECLINED are errors. See Error object for details.
+        type: string
+        enum: [APPROVED, WAITING, VALIDATION_FAILED, DECLINED]
+        example: 'APPROVED'
+      authenticationRedirect:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [SECURE_3D]
+            example: SECURE_3D
+          targetUrl:
+            type: string
+            example: 'https://3ds-acs.test.modirum.com/mdpayacs/pareq'
+          params:
+            type: object
+            properties:
+              PaReq:
+                type: string
+                example: 'c7fb83b8ag...73t4a827t4af8738a'
+              TermUrl:
+                type: string
+                example: 'https://api.example.com/redirectToAcs'
+              MD:
+                type: string
+                example: 'MD123...sdfk'
+      error:
+        $ref: '#/definitions/Error'
+    example:
+      apiTraceId: '2132352352112454'
+      ipgTransactionId: '838916029301'
+      transactionType: 'SALE'
+      authorizationCode: 'A1B2C3'
+      transactionTime: 1518811817
+      approvedAmount:
+        total: 100.24
+        currency: 'USD'
+      transactionStatus: 'APPROVED'
+  Error:
+    description: Model for error messaging
+    type: object
+    properties:
+      code:
+        description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
+        type: string
+      message:
+        description: A generic description of the error condition.
+        type: string
+      details:
+        description: Detailed information about message format errors.
+        type: array
+        items:
+          type: object
+          properties:
+            field:
+              description: The property or attribute associated with the error.
+              type: string
+            message:
+              description: Information specific to a property or attribute.
+              type: string
+    example:
+      code: 'SGS-005997'
+      message: 'The maximum number of transactions per order has been exceeded'
+      transactionStatus: 'NOT_PROCESSED'
+  PrimaryTransaction:
+    description: Model for primary financial transactions
+    type: object
+    required:
+      - transactionType
+      - amount
+      - paymentMethod
+    properties:
+      transactionType:
+        description: Type of the transaction to perform - REQUIRED
+        type: string
+        enum: [SALE, PRE_AUTH, CREDIT, FORCED_TICKET]
+        default: SALE
+      storeId:
+        description: an optional outlet id for clients that support multiple store in the same developer app.
+        type: string
+        example: '12345500000'
+      clientTransactionId:
+        description: The unique client Transaction ID from the Request header, if supplied.
+        type: string
+        example: '30dd879c-ee2f-11db-8314-0800200c9a66'
+      amount:
+        $ref: '#/definitions/Amount'
+      paymentMethod:
+        $ref: '#/definitions/PaymentMethod'
+      order:
+        $ref: '#/definitions/Order'
+      basketItems:
+        description: Required for some payment methods (e.g. Klarna)
+        type: array
+        items:
+          $ref: '#/definitions/BasketItem'
+      additionalDetails:
+        type: object
+        properties:
+          referenceNumber:
+            description: |
+              For FORCED_TICKET only. Stores the six digit reference number you have received as the result of a successful external authorization (e.g. by phone). The Gateway needs this number for uniquely mapping a ForcedTicket transaction to a previously performed external authorization.]
+            type: string
+            example: '123455'
+          comments:
+            type: string
+          dynamicMerchantName:
+            type: string
+          invoiceNumber:
+            type: string
+          purchaseOrderNumber:
+            type: string
+          recurringType:
+            type: string
+            enum: [FIRST, REPEAT, SI]
+          installmentOptions:
+            $ref: '#/definitions/InstallmentOptions'
+      industrySpecificExtensions:
+        $ref: '#/definitions/IndustrySpecificExtensions'
+    example:
+      transactionType: SALE
+      amount:
+        total: '100.24'
+        currency: 'USD'
+      paymentMethod:
+        type: 'paymentCard'
+        paymentCard:
+          number: '4035874000424977'
+          expiryDate:
+            month: '03'
+            year: '21'
+  SecondaryTransaction:
+    type: object
+    properties:
+      storeId:
+        type: string
+        description: an optional outlet id for clients that support multiple store in the same developer app.
+        example: '12345500000'
+      amount:
+        $ref: '#/definitions/Amount'
+  CardVerificationsTransaction:
+    description: Model for card verifcation transactions
+    type: object
+    required:
+      - paymentMethod
+    properties:
+      storeId:
+        description: an optional outlet id for clients that support multiple store in the same developer app.
+        type: string
+        example: '12345500000'
+      paymentMethod:
+        $ref: '#/definitions/PaymentMethod'
+    example:
+      paymentMethod:
+        type: 'paymentCard'
+        paymentCard:
+          number: '4035874000424977'
+          expiryDate:
+            month: '03'
+            year: '21'
+  Amount:
+    required:
+      - total
+      - currency
+    type: object
+    properties:
+      total:
+        type: number
+        example: 100.24
+      currency:
+        type: string
+        description: ISO 4217 (http://en.wikipedia.org/wiki/ISO_4217) currency code.
+        example: 'EUR'
+      components:
+        $ref: '#/definitions/AmountComponents'
+  AmountComponents:
+    type: object
+    properties:
+      subtotal:
+        type: number
+        example: 80
+      vatAmount:
+        type: number
+        example: 2.42
+      localTax:
+        type: number
+        example: 1.30
+      shipping:
+        type: number
+        example: 10
+      cashback:
+        type: number
+        example: 2
+      tip:
+        type: number
+        example: 6
+  PaymentMethod:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        enum: [PAYMENT_CARD, SEPA_DIRECT_DEBIT]
+        description: Type of payment method, paypal can only do 'Credit' as primary transactions with Order.Billing.Contact.email being mandatory, paypal secondary transactions (void/return/completion)are processed as any other secondary transactions.
+      paymentCard:
+        $ref: '#/definitions/PaymentCard'
+      sepaDirectDebit:
+        $ref: '#/definitions/SepaDirectDebit'
+  PaymentCard:
+    type: object
+    required:
+      - number
+    properties:
+      number:
+        description: payment card number
+        type: string
+        example: '4035874000424977'
+      expiryDate:
+        $ref: '#/definitions/Expiration'
+      securityCode:
+        description: CVV
+        type: string
+        example: '977'
+      cardFunction:
+        type: string
+        enum: [CREDIT, DEBIT]
+        default: 'CREDIT'
+      cardholderName:
+        type: string
+        example: 'John Doe'
+      authenticationRequest:
+        description: Request authentication of the card (typically 3d secure) to verify cardholder and be eligible for liability shift
+        type: object
+        properties:
+          type:
+            description: Indicates what kind of authentication scheme the merchant wants to use on the card - currently only 3D Secure is supported
+            type: string
+            enum: [SECURE_3D]
+      authenticationResult:
+        description: Submit the result of the authentication managed outside of The Gateway. For more convenient usage without implementing 3D Secure yourself see "authenticationRequest" section
+        type: object
+        properties:
+          type:
+            description: Type of authentication result e.g. 3D Secure
+            type: string
+            enum: [SECURE_3D]
+          verificationResponse:
+            description: Card enrollment result from the Verification Response (VeRes)
+            type: string
+            enum: [Y, N, U]
+          payerAuthenticationResponse:
+            description: Payer authentication result from Payment Authentication Response (PaRes)
+            type: string
+            enum: [Y, N, U, A]
+          authenticationValue:
+            description: Cardholder Authentication Verification Value (CAVV)
+            type: string
+            minLength: 20
+            maxLength: 32
+          xid:
+            description: Authentication ID
+            type: string
+            minLength: 20
+            maxLength: 32
+      brand:
+        type: string
+        example: 'VISA'
+        description: Optional, required only if using dual branded card
+  Expiration:
+    description: required for normal transactions except for payment with 'RECURRING' flags
+    type: object
+    required:
+      - month
+      - year
+    properties:
+      month:
+        type: string
+        example: '03'
+      year:
+        type: string
+        example: '21'
+  SepaDirectDebit:
+    type: object
+    description: the payment object for SEPA DD, iban, billing_address.name and country are required for this payment type.
+    required:
+      - iban
+    properties:
+      iban:
+        type: string
+        description: Bank account in IBAN format
+        example: 'DE34500100600032121604'
+      mandate:
+        $ref: '#/definitions/SepaMandate'
+  SepaMandate:
+    type: object
+    properties:
+      reference:
+        type: string
+        description: Existing mandate reference, managed by merchant. Has to match [A-Za-z0-9:?/+(),. -]{1,35} and not start with two slashes (“//”). AKA the Mandate ID
+        maxLength: 35
+      url:
+        type: string
+        description: Valid URL pointing to the SEPA mandate (PDF / HTML format recommended)
+      signatureDate:
+        type: string
+        format: date
+        description: Date of mandate signature, format is YYYY-MM-DD.
+      type:
+        type: string
+        description: Sequence type of the direct debit, defaults to “SINGLE” if not provided.
+        enum: [SINGLE, FIRST_COLLECTION, RECURRING_COLLECTION, FINAL_COLLECTION]
+        default: SINGLE
+  Order:
+    type: object
+    properties:
+      orderId:
+        type: string
+        example: 'ABC12345'
+      billing:
+        $ref: '#/definitions/Billing'
+      shipping:
+        $ref: '#/definitions/Shipping'
+  Billing:
+    type: object
+    properties:
+      name:
+        type: string
+        example: 'John Doe'
+        maxLength: 96
+      personalNumber:
+        type: string
+        example: '1234567/8901'
+      birthDate:
+        type: string
+        format: date
+        example: '1980-01-31'
+      gender:
+        type: string
+        enum: [MALE, FEMALE, UNKNOWN]
+      contact:
+        $ref: '#/definitions/Contact'
+      address:
+        $ref: '#/definitions/Address'
+  Contact:
+    type: object
+    properties:
+      phone:
+        type: string
+        maxLength: 32
+      mobilePhone:
+        type: string
+        maxLength: 32
+      fax:
+        type: string
+        maxLength: 32
+      email:
+        type: string
+        maxLength: 254
+  Shipping:
+    type: object
+    properties:
+      name:
+        type: string
+        example: 'John Doe'
+        maxLength: 96
+      contact:
+        $ref: '#/definitions/Contact'
+      address:
+        $ref: '#/definitions/Address'
+  Address:
+    type: object
+    properties:
+      company:
+        type: string
+        maxLength: 96
+      address1:
+        type: string
+        maxLength: 96
+      address2:
+        type: string
+        maxLength: 96
+      locality:
+        description: City or Locality
+        type: string
+        maxLength: 96
+      region:
+        description: State or Province
+        type: string
+        maxLength: 96
+      postalCode:
+        description: zip code or postal code
+        type: string
+        maxLength: 24
+      country:
+        description: ISO-3166-1  ALPHA-2, ALPHA-3 or numeric
+        type: string
+        maxLength: 32
+  BasketItem:
+    type: object
+    properties:
+      id:
+        description: Item Id
+        type: string
+      description:
+        description: Referenced parent Business Entity ID in master database for the outlets
+        type: string
+      unitPrice:
+        $ref: '#/definitions/Amount'
+      count:
+        description: Total quantity of items
+        type: integer
+        format: int32
+  IndustrySpecificExtensions:
+    type: object
+    properties:
+      airline:
+        $ref: '#/definitions/Airline'
+      lodging:
+        $ref: '#/definitions/Lodging'
+      carRental:
+        $ref: '#/definitions/CarRental'
+  Airline:
+    description: Addtional vertical specific data for Airline industry
+    type: object
+    properties:
+      passengerName:
+        type: string
+        maxLength: 30
+      ticketNumber:
+        type: string
+        maxLength: 20
+      issuingCarrier:
+        type: string
+        maxLength: 20
+      carrierName:
+        type: string
+        maxLength: 20
+      travelAgencyIataCode:
+        type: string
+        maxLength: 20
+      travelAgencyName:
+        type: string
+        maxLength: 30
+      airlinePlanNumber:
+        type: string
+        maxLength: 2
+      airlineInvoiceNumber:
+          type: string
+          maxLength: 6
+      reservationSystem:
+        type: string
+        enum: [START, TWA, DELTA, SABRE, COVIA_APOLLO, DR_BLANK, DER, TUI]
+      restricted:
+        type: boolean
+      travelRoute:
+        type: array
+        maxItems: 4
+        items:
+          type: object
+          properties:
+            departureDate:
+              type: string
+              format: date
+              description: date of departure
+              example: '2018-01-28'
+            origin:
+              type: string
+              maxLength: 3
+            destination:
+              type: string
+              maxLength: 3
+            carrierCode:
+              type: string
+              maxLength: 2
+            serviceClass:
+              type: string
+              maxLength: 1
+            stopoverType:
+              type: string
+              enum: [DIRECT, STOPOVER]
+            fareBasisCode:
+              type: string
+              maxLength: 2
+            departureTax:
+              type: number
+              maximum: 999999999999
+            flightNumber:
+              type: string
+              maxLength: 10
+      relatedTicketNumber:
+        type: string
+        maxLength: 20
+      ancillaryServiceCategory:
+        description: Identify purchase of ancillary goods or services with false value. If the element is not given, the transaction is assumed to be a purchase of airline ticket.
+        type: array
+        items:
+          type: object
+          properties:
+            serviceCategory:
+              type: string
+              enum: [BUNDLED_SERVICE, BAGGAGE_FEE, CHANGE_FEE, CARGO, CARBON_OFFSET, FREQUENT_FLYER, GIFT_CARD, GROUND_TRANSPORT, IN_FLIGHT_ENTERTAINMENT, LOUNGE, MEDICAL, MEAL_BEVERAGE, OTHER, PASSENGER_ASSIST_FEE, PETS, SEAT_FEES, STANDBY, SERVICE_FEE, STORE, TRAVEL_SERVICE, UNACCOMPANIED_TRAVEL, UPGRADES, WI_FI]
+      ticketPurchase:
+        type: boolean
+  Lodging:
+    type: object
+    properties:
+      arrivalDate:
+        description: date of arrival
+        type: string
+        format: date
+        example: '2010-05-15'
+      departureDate:
+        description: date of departure
+        type: string
+        format: date
+        example: '2018-01-28'
+      folioNumber:
+        description: portfolio number
+        type: string
+        maxLength: 20
+      extraCharges:
+        type: array
+        items:
+          type: object
+          properties:
+            chargeItem:
+              type: string
+              enum: [GIFT_SHOP, LAUNDRY, MINI_BAR, RESTAURANT, TELEPHONE, OTHER]
+      noShowIndicator:
+        type: boolean
+  CarRental:
+        type: object
+        properties:
+          agreementNumber:
+            type: string
+            maxLength: 20
+          renterName:
+            type: string
+            maxLength: 20
+          returnCity:
+            type: string
+            maxLength: 20
+          returnDate:
+            type: string
+            format: date
+          pickupDate:
+            type: string
+            format: date
+          rentalClassId:
+            type: string
+            maxLength: 6
+          extraCharges:
+            type: array
+            items:
+              type: object
+              properties:
+                chargeItem:
+                  type: string
+                  enum: [EXTRA_MILEAGE, GAS, LATE_RETURN, ONE_WAY_SERVICE_FEE, PARKING_VIOLATION]
+          noShowIndicator:
+            type: boolean
+  AuthenticationResponseVerification:
+    type: object
+    properties:
+      type:
+        type: string
+        enum: ['SECURE_3D']
+      MD:
+        type: string
+      PaRes:
+        type: string
+  InstallmentOptions:
+    type: object
+    description: Installment that the sum payable is divided for payment at successive fixed times.
+    properties:
+      numberOfInstallments:
+        description: Stores the number of instalments for a Sale transaction if the customer pays the amount in several parts
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 99
+      installmentsInterest:
+        description: Indicates if the installment interest has been applied; possible values "yes" or "no"
+        type: boolean
+      installmentDelayMonths:
+        description: Represents the number of months the first payment will be delayed
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 99
