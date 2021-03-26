@@ -1,7 +1,4 @@
----
-title: Online Store Integration
-author: steffen.dangel@firstdata.de
----
+
 
 The easiest first step for adding payments capabilities to your website is to implement a HTTP form that you post to our Gateway URL.
 
