@@ -1,7 +1,4 @@
----
-title: Recurring Payments
-author: adriana.vas@firstdata.de
----
+
 
   
 Recurring payments can either be triggered by your system everytime a payment is due or you can make use of our scheduler that allows you to define the frequency and period (e.g. every three days, every second week, every month, once a year, etc.).
@@ -216,4 +213,4 @@ The Recurring Payments section in the Virtual Terminal allows you to make a cred
 
 &nbsp;
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/docs/api
+ [1]: ../api/?type=post&path=/authentication/access-tokens
