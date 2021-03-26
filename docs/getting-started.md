@@ -1,9 +1,4 @@
----
-title: First Data Gateway
-author: steffen.dangel@firstdata.de
----
 
-&nbsp;
 
 ## First Data Gateway
 
@@ -44,7 +39,7 @@ Choose the type of your project to get quickly to what you need.
     <tr>
       <td>
         <p>
-          <a href="?path=docs/GettingStarted/RecurringPayments/RecurringPayments.md"><img alt="RECURRING" data-entity-type="file" data-entity-uuid="0e127e44-ed24-4098-be4f-0ea3a25bc3b1" src="/sites/default/files/inline-images/RECURRING_0.png" /></a>
+          <a href="?path=docs/GettingStarted/RecurringPayments/RecurringPayments.md"><img alt="RECURRING" data-entity-type="file" data-entity-uuid="0e127e44-ed24-4098-be4f-0ea3a25bc3b1" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/RECURRING_0.png" /></a>
         </p>
       </td>
       <td>
@@ -60,5 +55,5 @@ Choose the type of your project to get quickly to what you need.
 #### Looking for something else?
 
 > [Go directly to our API reference](../api?type=post&path=/authentication/access-tokens)  
-> [Check out other First Data developer resources](?path=docs/Transactions/Charges.md)
+> [Check out other First Data developer resources](?path=docs/getting-started.md)
 
