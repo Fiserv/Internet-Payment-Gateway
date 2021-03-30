@@ -1,11 +1,9 @@
-toc:
-  - section:
-    - title: Getting Started
-    - link: getting-started.md
-    - open: true
-    - article:
-      - title: Online Payments
-      - link: GettingStarted/OnlineStoreIntegration/OnlineStoreIntegration.md
-    - article:
-      - title: Recurring Payments
-      - link: GettingStarted/RecurringPayments/RecurringPayments.md
+- sections:
+  - title: Getting Started
+    link: getting-started.md
+    open: true
+    articles:
+    - title: Online Payments
+      link: GettingStarted/OnlineStoreIntegration/OnlineStoreIntegration.md
+    - title: Recurring Payments
+      link: GettingStarted/RecurringPayments/RecurringPayments.md
