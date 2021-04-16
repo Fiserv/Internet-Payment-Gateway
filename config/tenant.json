@@ -57,11 +57,25 @@
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/tomeck/transactionenrichmentstoplight/main/docs/carat_logo.png",
     "description": "Internet Payment Gateway makes it easier for merchants to access omnichannel services from a single point of connection. That includes access to solutions for global acquiring, payment methods, commerce channels, payouts, prepaid payments, B2B payments, payments optimization, security and fraud, and data insights.",
-    "longDescription":"Internet Payment Gateway makes it easier for merchants to access omnichannel services from a single point of connection. That includes access to solutions for global acquiring, payment methods, commerce channels, payouts, prepaid payments, B2B payments, payments optimization, security and fraud, and data insights.\n<ul><li>Configurable boarding experience</li><li> Orchestration layer and workflow customizations</li><li> API translator and flexible communication standards</li></ul>",
+    "longDescription":"Online payments and real-time auths across APAC, EMEA, LATAM and North America.\n<ul><li>Security and fraud</li><li> Currency solutions</li><li> Routing optimization</li></ul>",
     "apiSpecification": "/v1/apis",
     "layout": "/v1/layouts",
     "documentation": "/v1/docs",
     "documenttree": "/v1/docs",
-    "documenttreeV2": "/v2/docs"
+    "documenttreeV2": "/v2/docs",
+    "feature":[
+      {
+        "name": "sandBox",
+        "value": false
+      },
+      {
+        "name": "plugins",
+        "value": false
+      },
+      {
+        "name": "industryOptionsAPIExplorer",
+        "value": false
+      }
+   ]
   }
 }
