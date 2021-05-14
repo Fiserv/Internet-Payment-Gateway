@@ -53,6 +53,13 @@
       ]
     }
   ],
+  "apiVersions": [
+    {
+      "version": "1.0.0",
+      "versionType": "minor",
+      "releaseNotesPath": "/release-notes/release-notes-1.0.0.md"
+    }
+  ],
   "product": {
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/tomeck/transactionenrichmentstoplight/main/docs/carat_logo.png",
