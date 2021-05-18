@@ -55,6 +55,11 @@
   ],
   "apiVersions": [
     {
+      "version": "1.0.0",
+      "versionType": "minor",
+      "releaseNotesPath": "/release-notes/release-notes-1.0.0.md"
+    },
+    {
       "version": "21.1.0",
       "versionType": "minor",
       "releaseNotesPath": "/release-notes/release-notes-21.1.0.md"
