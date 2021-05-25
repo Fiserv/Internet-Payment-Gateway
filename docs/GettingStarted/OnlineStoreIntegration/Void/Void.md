@@ -9,7 +9,7 @@ If your customer has canceled the order or you detect&nbsp;suspicious order deta
   <tbody>
     <tr>
       <td>
-        <img alt="/payments/{transaction-id}" data-entity-type="file" data-entity-uuid="e594284a-706d-4b4a-b448-f6747c4e3a52" src="/files/POST-payments_0.png" />
+        <img alt="/payments/{transaction-id}" data-entity-type="file" data-entity-uuid="e594284a-706d-4b4a-b448-f6747c4e3a52" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/POST-payments_0.png" />
       </td>
       
       <td>

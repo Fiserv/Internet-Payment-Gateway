@@ -13,7 +13,7 @@ In order to complete a transaction and initiate the settlement process, you will
   <tbody>
     <tr>
       <td>
-        <img alt="/orders/{order-id}" data-align="left" data-entity-type="file" data-entity-uuid="e0a54d19-c669-477a-a300-23fd1e897dd0" src="/files/POST-orders.png" />
+        <img alt="/orders/{order-id}" data-align="left" data-entity-type="file" data-entity-uuid="e0a54d19-c669-477a-a300-23fd1e897dd0" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/POST-orders.png" />
       </td>
       
       <td>
@@ -29,7 +29,7 @@ In order to complete a transaction and initiate the settlement process, you will
     
     <tr>
       <td>
-        <img alt="/payments/{transaction-id}" data-entity-type="file" data-entity-uuid="e594284a-706d-4b4a-b448-f6747c4e3a52" src="/files/POST-payments_0.png" />
+        <img alt="/payments/{transaction-id}" data-entity-type="file" data-entity-uuid="e594284a-706d-4b4a-b448-f6747c4e3a52" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/POST-payments_0.png" />
       </td>
       
       <td>

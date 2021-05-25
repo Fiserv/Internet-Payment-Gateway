@@ -115,7 +115,7 @@ bcountry</pre>
 
 <span lang="EN-US">See below an example of a hosted payment page in the checkout option ‘combinedpage’, where the country is pre-set to ‘Germany’ based on the customer’s IP address but still it can be changed via a dedicated drop-down, where else the payment methods are limited based on the combination country/currency.</span>
 
-<img alt="eg" data-align="center" data-entity-type="file" data-entity-uuid="39e5233a-feed-4ffc-bc4b-717c835c7889" height="361" src="/files/connectup1.png" width="566" /> 
+<img alt="eg" data-align="center" data-entity-type="file" data-entity-uuid="39e5233a-feed-4ffc-bc4b-717c835c7889" height="361" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/connectup1.png" width="566" /> 
 
 ### Payment Method Specific Fields to be Considered for Local Payments
 

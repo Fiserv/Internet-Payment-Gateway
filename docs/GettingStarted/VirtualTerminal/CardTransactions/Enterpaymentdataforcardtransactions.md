@@ -5,7 +5,7 @@ Enter payment data for card transactions
 
 <span>A graphic for each card type that has been setup for your store is shown.</span>
 
-<img alt="cardinfo" data-align="center" data-entity-type="file" data-entity-uuid="5ddb8715-55ee-4b1f-8ff6-b2afb7b24c7d" src="/files/cardInfo.png" /> 
+<img alt="cardinfo" data-align="center" data-entity-type="file" data-entity-uuid="5ddb8715-55ee-4b1f-8ff6-b2afb7b24c7d" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/cardInfo.png" /> 
 
 <span><em><span>Virtual Terminal: Card data input fields<span>&nbsp;</span></span></em></span>
 

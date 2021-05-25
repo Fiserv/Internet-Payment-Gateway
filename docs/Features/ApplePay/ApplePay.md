@@ -1,7 +1,7 @@
 Apple Pay
 ---
 
-<img alt="Apple Pay logo" data-align="left" data-entity-type="file" data-entity-uuid="1b7e6d55-b5bd-4b9a-97fb-b07773dd5129" src="/files/ApplePaylogo.png" />
+<img alt="Apple Pay logo" data-align="left" data-entity-type="file" data-entity-uuid="1b7e6d55-b5bd-4b9a-97fb-b07773dd5129" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/ApplePaylogo.png" />
 
 &nbsp;
 
@@ -21,7 +21,7 @@ To get more information on participating banks and countries for Apple Pay, [cli
 
 &nbsp;
 
-<img alt="Apple Pay" data-align="center" data-entity-type="file" data-entity-uuid="670aed74-c6f2-419e-8208-26b4099a76a3" src="/files/ApplePay.png" /> 
+<img alt="Apple Pay" data-align="center" data-entity-type="file" data-entity-uuid="670aed74-c6f2-419e-8208-26b4099a76a3" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/ApplePay.png" /> 
 
 &nbsp;
 
@@ -43,7 +43,7 @@ To get more information on participating banks and countries for Apple Pay, [cli
   * <span><span><span>In-order to generate certificate you must have a paid apple developer account or an organization account. New users must follow the prompts to set up a developer account. </span></span></span>
   * <span><span><span>Select Certificates, Identifiers and Profile : </span></span></span>
 
-<img alt="Certificates, Identifiers and Profile " data-entity-type="file" data-entity-uuid="58e6fc53-9fdb-438e-9aba-f08c97090b6b" src="/sites/default/files/inline-images/12.1.png" /> 
+<img alt="Certificates, Identifiers and Profile " data-entity-type="file" data-entity-uuid="58e6fc53-9fdb-438e-9aba-f08c97090b6b" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/12.1.png" /> 
 
   * <span><span><span>Select Identifier's and in the dropdown in the upper-right corner select merchant id</span></span></span>
   * <span><span><span>Enter a unique merchant id, and upload a valid CSR in .pem format. </span></span></span>
@@ -55,7 +55,7 @@ To get more information on participating banks and countries for Apple Pay, [cli
 
   * <span><span><span>Request a new certificate from your keychain access. </span></span></span>
 
-<img alt="Request certificate" data-entity-type="file" data-entity-uuid="27c0d175-328d-4003-a750-a2a849079b53" src="/sites/default/files/inline-images/13_1.png" /> 
+<img alt="Request certificate" data-entity-type="file" data-entity-uuid="27c0d175-328d-4003-a750-a2a849079b53" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/13_1.png" /> 
 
   * <span><span><span>Follow the prompt and request the certificate to be saved on file. </span></span></span>
   * <span><span><span>In the 'Certificate' section in the apple portal, click on the '+' and follow the prompt to request apple developer certificate for 'IOS' development.</span></span></span>
@@ -85,7 +85,7 @@ To get more information on participating banks and countries for Apple Pay, [cli
 
 <span><span><span>In the SDK enter the URL, api key and api secret and build the app:</span></span></span>
 
-<img alt="SDK" data-entity-type="file" data-entity-uuid="9a233c5e-1a72-48ab-9d13-b73dc631a9ec" src="/sites/default/files/inline-images/14.2.png" /> 
+<img alt="SDK" data-entity-type="file" data-entity-uuid="9a233c5e-1a72-48ab-9d13-b73dc631a9ec" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/14.2.png" /> 
 
   * <span><span><span>Merchant id: Enter any valid merchant id registered in the apple portal. This gives the capability for a single user to use multiple merchant id's</span></span></span>
   * <span><span><span>Amount: Enter the amount of the transaction</span></span></span>

@@ -5,7 +5,7 @@ If you want to fully outsource the payment process in order not to have any sens
 
 The hosted pages show your merchant name at the top and allow you to display a summary of the purchased items to your customer.
 
-<img alt="hostedpage-option" data-align="center" data-entity-type="file" data-entity-uuid="8b451e8f-96c5-4cc3-ae24-5c324b835aaf" src="/files/hostedpage-option.png" /> 
+<img alt="hostedpage-option" data-align="center" data-entity-type="file" data-entity-uuid="8b451e8f-96c5-4cc3-ae24-5c324b835aaf" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/hostedpage-option.png" /> 
 
 ### Required Fields
 

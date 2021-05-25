@@ -5,7 +5,7 @@ Adding Order Information
 
 <span>You must fill out all required fields. To enter <em>Order Information</em>, follow the steps below.</span>
 
-<img alt="OrderInfo" data-align="center" data-entity-type="file" data-entity-uuid="f7fd20e7-3e2b-421d-b509-851b386db505" src="/files/OrderInfo_0.png" /> 
+<img alt="OrderInfo" data-align="center" data-entity-type="file" data-entity-uuid="f7fd20e7-3e2b-421d-b509-851b386db505" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/OrderInfo_0.png" /> 
 
 **_<span>Order Number (optional)</span>_**
 

@@ -7,7 +7,7 @@ Enter payment data for Direct Debit transactions
 
 <span>If you set the Mandate type to Recurring, an additional mandatory field appears where the Mandate Date needs to be entered.</span>
 
-<img alt="Direct Debit Information" data-align="center" data-entity-type="file" data-entity-uuid="40463448-234f-4803-b30f-9518b031ec85" height="200" src="/files/DirectDebitscreenshot.png" width="703" /> 
+<img alt="Direct Debit Information" data-align="center" data-entity-type="file" data-entity-uuid="40463448-234f-4803-b30f-9518b031ec85" height="200" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/DirectDebitscreenshot.png" width="703" /> 
 
 _<span>Virtual Terminal: Direct Debit input fields</span>_
 

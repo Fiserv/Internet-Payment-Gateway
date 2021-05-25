@@ -10,7 +10,7 @@ Direct Post
   You create the payment form and display it within your website or app. When your customer has entered the card details and presses the "continue button", the customer's device sends the payment information directly to Fiserv.
 </p>
 
-<img alt="directpost-option" data-align="center" data-entity-type="file" data-entity-uuid="062c1304-eab1-40e2-8667-856ec2e7d358" src="/files/directpost-option.png" /> 
+<img alt="directpost-option" data-align="center" data-entity-type="file" data-entity-uuid="062c1304-eab1-40e2-8667-856ec2e7d358" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/directpost-option.png" /> 
 
 <p class="CxSpFirst">
   <span><span><span><span><span>This comes with many advantages and benefits to you with regard to both the customer experience, and your overall <a href="https://www.pcisecuritystandards.org/">PCI Data Security Standard</a> compliance exposure.</span></span></span></span></span>

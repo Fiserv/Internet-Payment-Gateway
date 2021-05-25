@@ -23,7 +23,7 @@ Selecting Products from your Product Catalogue
 
 <span>Once you've completed your product selections, click on the <em>POS Main</em> button to return to the <em>Virtual Terminal</em> main page, where you can enter payment and contact information for this order.<br /> A table should appear at the top of the page showing all the products selected for this order along with the subtotal of the order. </span>
 
-<img alt="catalog" data-align="center" data-entity-type="file" data-entity-uuid="8c1b0389-bdaa-4e8d-bdc4-f79987ba0417" src="/files/catalog.png" /> 
+<img alt="catalog" data-align="center" data-entity-type="file" data-entity-uuid="8c1b0389-bdaa-4e8d-bdc4-f79987ba0417" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/catalog.png" /> 
 
 _<span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Virtual Terminal: Products selected from Product Catalogue</span>_
 

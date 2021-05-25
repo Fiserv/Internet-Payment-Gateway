@@ -7,7 +7,7 @@ Currency Conversion
 
 &nbsp;
 
-<img alt="DCC" data-align="center" data-entity-type="file" data-entity-uuid="7fc4e6ce-7612-4b0b-835b-c96b10ec30f3" height="357" src="/files/DCCup1.png" width="560" /><img alt="DCC 2" data-align="center" data-entity-type="file" data-entity-uuid="12e3a255-20ce-4bc1-a825-b4370b8bf8c1" height="359" src="/files/DCCup2.png" width="565" /> 
+<img alt="DCC" data-align="center" data-entity-type="file" data-entity-uuid="7fc4e6ce-7612-4b0b-835b-c96b10ec30f3" height="357" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/DCCup1.png" width="560" /><img alt="DCC 2" data-align="center" data-entity-type="file" data-entity-uuid="12e3a255-20ce-4bc1-a825-b4370b8bf8c1" height="359" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/DCCup2.png" width="565" /> 
 
 &nbsp;
 
