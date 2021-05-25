@@ -10,7 +10,7 @@ Please note that if you store or process cardholder data within your own applica
 
 For tokenization of&nbsp;card details that you can then use for later payment transactions via&nbsp;API requests,&nbsp;please have a look at our [JavaScript option][1] for this purpose.
 
-<img alt="API option" data-align="center" data-entity-type="file" data-entity-uuid="cf386602-83ec-4212-8839-67408ae1f79d" src="assets/images/API-option.png" /> 
+<img alt="API option" data-align="center" data-entity-type="file" data-entity-uuid="cf386602-83ec-4212-8839-67408ae1f79d" src="/assets/images/API-option.png" /> 
 
 &nbsp;
 
