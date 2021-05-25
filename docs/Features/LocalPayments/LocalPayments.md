@@ -1,5 +1,4 @@
----
-title: Local Payments
+Local Payments
 ---
 
 _The following information is only relevant if you are using Fiserv's Local Payments solution._

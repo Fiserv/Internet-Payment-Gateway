@@ -1,5 +1,3 @@
-
-
 ## First Data Gateway
 
 &nbsp;

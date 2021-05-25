@@ -1,4 +1,3 @@
----
-title: Gateway to Fraud Detect Transaction Field Mapping
+Gateway to Fraud Detect Transaction Field Mapping
 ---
 

@@ -1,5 +1,4 @@
----
-title: How to generate a hash
+How to generate a hash
 ---
 
 If you are using an HTML form to initiate the _sale_ or _preauth_ transaction, your request needs to include a security hash for verification of&nbsp;the message integrity.

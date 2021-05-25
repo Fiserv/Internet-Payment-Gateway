@@ -1,5 +1,4 @@
----
-title: Google Pay
+Google Pay
 ---
 
 <img alt="Google Pay logo" data-align="left" data-entity-type="file" data-entity-uuid="36a5cfb6-5b57-4386-92a9-cab37da62e49" height="63" src="/files/GooglePaylogo.png" width="103" />

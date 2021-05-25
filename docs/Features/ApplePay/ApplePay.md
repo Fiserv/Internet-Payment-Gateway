@@ -1,5 +1,4 @@
----
-title: Apple Pay
+Apple Pay
 ---
 
 <img alt="Apple Pay logo" data-align="left" data-entity-type="file" data-entity-uuid="1b7e6d55-b5bd-4b9a-97fb-b07773dd5129" src="/files/ApplePaylogo.png" />

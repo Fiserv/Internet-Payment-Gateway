@@ -1,5 +1,4 @@
----
-title: Transaction Currency Codes
+Transaction Currency Codes
 ---
 
 <table>

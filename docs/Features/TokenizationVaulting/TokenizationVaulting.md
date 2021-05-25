@@ -1,5 +1,4 @@
----
-title: Tokenization/Vaulting
+Tokenization/Vaulting
 ---
 
 If you need sensitive cardholder data for future use (e.g. to allow&nbsp;one-click shopping for registered customers or to trigger subsequent transactions), you can use a token to reference to the data at a later point so that you do not need to store these details within your own systems.

@@ -1,5 +1,4 @@
----
-title: MasterPass
+MasterPass
 ---
 
 <p class="MsoBodyText">

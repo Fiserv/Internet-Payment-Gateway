@@ -1,5 +1,4 @@
----
-title: Payment Method Values
+Payment Method Values
 ---
 
 If your customers select the payment method within your webstore and you post a HTML form to initiate the payment, your request needs to contain a value for the parameter _paymentMethod_.

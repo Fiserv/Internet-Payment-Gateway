@@ -1,5 +1,4 @@
----
-title: Fraud Prevention
+Fraud Prevention
 ---
 
 <span><span><span><span><span><span><span><span><span>There are several ways that our gateway can help you to prevent fraud from interfering with your business success:</span></span></span></span></span></span></span></span></span>

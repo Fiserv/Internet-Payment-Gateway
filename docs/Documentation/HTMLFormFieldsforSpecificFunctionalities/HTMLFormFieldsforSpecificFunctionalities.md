@@ -1,5 +1,4 @@
----
-title: HTML Form Fields for Specific Functionalities
+HTML Form Fields for Specific Functionalities
 ---
 
 Some functionalities create the need additional fields or fields that become mandatory which would otherwise be optional, either for the addendum to be achieved, scheme requirements met for specific MCCs or to send required information for a specific payment method, as below:

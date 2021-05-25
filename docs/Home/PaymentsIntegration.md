@@ -1,5 +1,4 @@
----
-title: Payments Integration
+Payments Integration
 ---
 
   

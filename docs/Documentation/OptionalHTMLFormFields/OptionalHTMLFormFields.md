@@ -1,5 +1,4 @@
----
-title: Optional HTML Form Fields
+Optional HTML Form Fields
 ---
 
 If you post a HTML form to initiate the payment, there are a number of optional fields that you can include in your request for different purpose.

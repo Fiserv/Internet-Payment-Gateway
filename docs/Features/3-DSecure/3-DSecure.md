@@ -1,5 +1,4 @@
----
-title: 3-D Secure 
+3-D Secure 
 ---
 
 3-D Secure is a messaging protocol developed by EMVCo to support app-based&nbsp;authentication and integration with digital wallets, as well as traditional browser based eCommerce transactions. The solution introduces&nbsp;many benefits to the&nbsp;marketplace as they will reflect the payment community’s objective to secure&nbsp;consumer eCommerce transactions while optimizing the user experience. <span></span>

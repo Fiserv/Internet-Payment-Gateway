@@ -1,5 +1,4 @@
----
-title: PayPal
+PayPal
 ---
 
 <span><span><span>When integrating PayPal as a payment method, please refer to the following information.</span></span></span>

@@ -1,5 +1,4 @@
----
-title: Billing/Shipping Information 
+Billing/Shipping Information 
 ---
 
 If you post a HTML form to initiate the payment, you can include billing and shipping information in your request by using the following fields. Some of these fields are mandatory for specific alternative payment methods or relevant for fraud prevention purpose.

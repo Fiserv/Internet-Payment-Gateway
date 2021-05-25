@@ -1,5 +1,4 @@
----
-title: Response Codes
+Response Codes
 ---
 
 ###<img alt="Result Code" data-entity-type="file" data-entity-uuid="db9127dc-38a6-46f3-93ad-f7108684b784" src="/files/resultcode.png" /> 
