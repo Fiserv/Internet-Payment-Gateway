@@ -1,5 +1,4 @@
----
-title: Selecting Products from your Product Catalogue
+### Selecting Products from your Product Catalogue
 ---
 
 <span>The Virtual Terminal offers you the timesaving ability to choose items from your product catalogue every time you process an order. To enable this feature, you first need to enter your product catalogue using the <em>Manage your Product Catalogue</em> function in the <em>Customisation</em> section. For every product you have entered, you can click on <em>Edit</em> to add options (e. g. colour, size etc.). Once you've done that, simply go to the <em>Virtual Terminal </em>main page and click on the <em>Select Products</em> button to select products for this order. The <em>Product Catalogue</em> page will appear.</span>

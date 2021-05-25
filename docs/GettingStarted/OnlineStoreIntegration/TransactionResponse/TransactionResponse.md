@@ -1,5 +1,4 @@
----
-title: Transaction Response
+### Transaction Response
 ---
 
 ## Step 2: Receiving the Transaction Result

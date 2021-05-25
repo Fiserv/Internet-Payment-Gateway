@@ -1,5 +1,4 @@
----
-title: Hosted Payment Pages
+### Hosted Payment Pages
 ---
 
 If you want to fully outsource the payment process in order not to have any sensitive cardholder data on your systems, you can use our ready-made hosted pages for your customers to enter their payment information.

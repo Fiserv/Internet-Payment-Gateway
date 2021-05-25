@@ -1,5 +1,4 @@
----
-title: Tokenization with JavaScript
+### Tokenization with JavaScript
 ---
 
 <span><span><span><span lang="EN-US"><span>Tokenization with JavaScript allows you to use the advantages of an API interaction (server-to-server) and at the same time benefit from a solution that keeps sensitive card details away from&nbsp;your own systems, alleviating compliance with the PCI Data Security Standard.</span></span></span></span></span>

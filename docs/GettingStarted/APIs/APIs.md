@@ -1,5 +1,5 @@
----
-title: APIs
+
+### APIs
 ---
 
 For server-to-server interactions with the First Data Gateway, we provide APIs that give you&nbsp;<span><span><span><span><span><span><span><span>maximum </span></span></span></span><span><span><span><span>flexibility in implementing custom business logic and full control over the look and feel of the customer journey.</span></span></span></span></span></span></span></span>

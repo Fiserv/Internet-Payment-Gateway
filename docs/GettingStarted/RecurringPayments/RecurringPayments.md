@@ -1,5 +1,4 @@
----
-title: Recurring Payments
+### Recurring Payments
 ---
 
   

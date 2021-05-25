@@ -1,5 +1,4 @@
----
-title: Virtual Terminal
+### Virtual Terminal
 ---
 
 If you want to enter transactions manually, e.g. to take orders via phone or to run a Void or Return, our _Virtual Terminal_ is the ideal solution.

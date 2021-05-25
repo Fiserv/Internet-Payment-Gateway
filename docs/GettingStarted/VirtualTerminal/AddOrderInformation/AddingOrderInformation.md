@@ -1,5 +1,4 @@
----
-title: Adding Order Information 
+### Adding Order Information 
 ---
 
 <span>The <em>Order Information</em> section has only one required field: the total amount of the order (including all taxes and shipping). Other fields in the section are optional and can be used at your discretion. </span>

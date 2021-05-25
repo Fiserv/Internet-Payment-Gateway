@@ -1,5 +1,4 @@
----
-title: Completion (Post-Authorization)
+### Completion (Post-Authorization)
 ---
 
 ## Step 3: Completion When Goods Get Shipped

@@ -1,5 +1,4 @@
----
-title: Void
+### Void
 ---
 
 ## Step 4: Voiding a Transaction
