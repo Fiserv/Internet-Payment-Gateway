@@ -1,4 +1,4 @@
-### Return (aka Refund)
+Return (aka Refund)
 ---
 
 ## Step 5: Giving Money Back When Goods Have Been Returned

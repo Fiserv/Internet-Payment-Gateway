@@ -1,4 +1,4 @@
-### Review the Results
+Review the Results
 ---
 
 <span>The result screen will contain all the information you entered, plus an extra section at the top called <em>Transaction Information</em>.</span>

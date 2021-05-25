@@ -1,4 +1,4 @@
-### Enter payment data for Direct Debit transactions
+Enter payment data for Direct Debit transactions
 ---
 
 <span>The <em>Payment Details</em> section for Direct Debit transactions shows fields for the customer’s IBAN (International Bank Account Number), the BIC (Business Identifier Code - which is required in case of transactions with a foreign IBAN), the Account Holder, an optional field for the Mandate Reference and a drop-down menu for the Mandate type.</span>

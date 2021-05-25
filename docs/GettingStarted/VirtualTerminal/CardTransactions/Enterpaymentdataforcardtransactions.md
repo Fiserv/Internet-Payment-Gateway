@@ -1,4 +1,4 @@
-### Enter payment data for card transactions
+Enter payment data for card transactions
 ---
 
 <span>The <em>Payment Details</em> section shows fields required for a Sale, Authorise Only, Forced Ticket or <em>Account authorization</em> transaction.</span>

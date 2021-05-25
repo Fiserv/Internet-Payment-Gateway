@@ -1,4 +1,4 @@
-### Pre-Authorization/Sale
+Pre-Authorization/Sale
 ---
 
 ## Step 1: Checkout Process in Your Webstore

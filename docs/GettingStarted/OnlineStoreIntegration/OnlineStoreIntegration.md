@@ -1,4 +1,4 @@
-### Online Store Integration
+Online Store Integration
 ---
 
 #### Adding Payment Capabilities to a Website

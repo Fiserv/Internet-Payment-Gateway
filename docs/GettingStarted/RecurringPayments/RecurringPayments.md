@@ -1,4 +1,4 @@
-### Recurring Payments
+Recurring Payments
 ---
 
   
