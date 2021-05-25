@@ -48,4 +48,55 @@
         link: docs/GettingStarted/VirtualTerminal/SelectProducts/SelectingProductsfromyourProductCatalogue.md
       - title: Review Results
         link: docs/GettingStarted/VirtualTerminal/TransactionResult/ReviewtheResults.md
+
+- sections:
+  - title: HTML Information
+    sections:
+    - title: Billing/Shipping Information
+      link: docs/Documentation/BillingShippingInformation/BillingShippingInformation.md
+    - title: HTML Form Fields for Specific Functionalities
+      link: docs/Documentation/HTMLFormFieldsforSpecificFunctionalities/HTMLFormFieldsforSpecificFunctionalities.md
+    - title: Generate a hash
+      link: docs/Documentation/HowtoGenerateaHash/HowtoGenerateaHash.md
+    - title: Optional HTML Form Fields
+      link: docs/Documentation/OptionalHTMLFormFields/OptionalHTMLFormFields.md
+    - title: Payment Method Values
+      link: docs/Documentation/PaymentMethodValues/PaymentMethodValues.md
+    - title: Response Codes
+      link: docs/Documentation/ResponseCodes/ResponseCodes.md
+    - title: Transaction Currency Codes
+      link: docs/Documentation/TransactionCurrencyCodes/TransactionCurrencyCodes.md
+
+- sections:
+  - title: Features
+    sections:
+    - title: 3-D Secure
+      link: docs/Features/3-DSecure/3-DSecure.md
+    - title: Apple Pay
+      link: docs/Features/ApplePay/ApplePay.md
+    - title: Currency Conversion
+      link: docs/Features/CurrencyConversion/CurrencyConversion.md
+    - title: Fraud Prevention
+      link: docs/Features/FraudPrevention/FraudPrevention.md
+    - title: Google Pay
+      link: docs/Features/GooglePay/GooglePay.md
+    - title: Local Payments
+      link: docs/Features/LocalPayments/LocalPayments.md
+    - title: Master Pass
+      link: docs/Features/MasterPass/MasterPass.md
+    - title: Pay Pal
+      link: docs/Features/PayPal/PayPal.md
+    - title: Recurring Payments
+      link: docs/Features/RecurringPayments/RecurringPayments.md
+    - title: Tokenization/Vaulting
+      link: docs/Features/TokenizationVaulting/TokenizationVaulting.md
+
+- sections:
+  - title: Payments Integration
+    link: docs/Home/PaymentsIntegration.md
+
+- sections:
+  - title: Fraud Detect Transaction Field Mapping
+    link: docs/other/UserManuals/GatewaytoFraudDetectTransactionFieldMapping/GatewaytoFraudDetectTransactionFieldMapping.md
+    
     
