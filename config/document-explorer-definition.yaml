@@ -2,8 +2,50 @@
   - title: Getting Started
     link: docs/getting-started.md
     open: true
-    articles:
-    - title: Online Payments
-      link: docs/GettingStarted/OnlineStoreIntegration/OnlineStoreIntegration.md
+    sections:
+    - title: APIs
+      link: docs/GettingStarted/APIs/APIs.md
+
+    - title: DirectPost
+      link:  docs/GettingStarted/DirectPost/DirectPost.md
+
+    - title: Glossary
+      link:  docs/GettingStarted/Glossary/Glossary.md
+    - title: HostedPaymentPages
+      link:  docs/GettingStarted/HostedPaymentPages/HostedPaymentPages.md
+    - title: OnlineStoreIntegration
+      link:  docs/GettingStarted/OnlineStoreIntegration/OnlineStoreIntegration.md
+      articles:
+      - title: Pre-Authorization/Sale
+        link: docs/GettingStarted/OnlineStoreIntegration/Pre-AuthorizationSale/Pre-AuthorizationSale.md
+      - title: Receiving Transaction Response
+        link: docs/GettingStarted/OnlineStoreIntegration/TransactionResponse/TransactionResponse.md
+      - title: Post-Authorization
+        link: docs/GettingStarted/OnlineStoreIntegration/CompletionPost-Authorization/CompletionPost-Authorization.md
+      - title: Voiding Transaction
+        link: docs/GettingStarted/OnlineStoreIntegration/Void/Void.md      
+      - title: Return (aka Refund)
+        link: docs/GettingStarted/OnlineStoreIntegration/ReturnakaRefund/ReturnakaRefund.md    
+ 
     - title: Recurring Payments
-      link: docs/GettingStarted/RecurringPayments/RecurringPayments.md
+      link:  docs/GettingStarted/RecurringPayments/RecurringPayments.md
+
+    - title: Tokenization with JavaScript
+      link:  docs/GettingStarted/TokenizationwithJavaScript/TokenizationwithJavaScript.md
+
+    - title: Virtual Terminal
+      link:  docs/GettingStarted/VirtualTerminal/VirtualTerminal.md
+      articles:
+      - title: Adding Order Information
+        link: docs/GettingStarted/VirtualTerminal/AddOrderInformation/AddOrderInformation.md
+      - title: Payment data for card transactions
+        link: docs/GettingStarted/VirtualTerminal/CardTransactions/Enterpaymentdataforcardtransactions.md
+      - title: Complete the Transaction
+        link: docs/GettingStarted/VirtualTerminal/CompletetheTransaction/CompletetheTransaction.md
+      - title: Payment data for Direct Debit transactions
+        link: docs/GettingStarted/VirtualTerminal/DirectDebitTransactions/EnterpaymentdataforDirectDebittransactions.md
+      - title: Selecting Products from Product Catalogue
+        link: docs/GettingStarted/VirtualTerminal/SelectProducts/SelectingProductsfromyourProductCatalogue.md
+      - title: Review Results
+        link: docs/GettingStarted/VirtualTerminal/TransactionResult/ReviewtheResults.md
+    
