@@ -1,113 +1,19 @@
 openapi: 3.0.2
 #
 info:
-  version: 21.2.0
+  version: 21.1.0
   title: Payment Gateway API Specification.
   description: "The documentation here is designed to provide all of the technical guidance required to consume and integrate with our APIs for payment processing. To learn more about our APIs please visit https://docs.firstdata.com/org/gateway."
 servers:
   - url: 'https://cert.api.firstdata.com/gateway/v2'
-x-header-api-key: 'csn5gVMfGgXh1cnFtimlHQOH1zNERw7Q'
-x-header-api-secret: '9JiLZgNhQPTA1KIt'
-x-production-url: prod.api.firstdata.com/gateway/v2
-x-config:
-  tryItOut: true
-x-link-list:
-  items:
-  - title: SDKs
-    items:
-    - title: Github Repositories
-      items:
-      - name: C# .NET
-        link: https://github.com/GBSEcom/DotNet
-      - name: Python
-        link: https://github.com/GBSEcom/Python
-      - name: Ruby
-        link: https://github.com/GBSEcom/Ruby
-      - name: Java
-        link: https://github.com/GBSEcom/java
-      - name: PHP
-        link: https://github.com/GBSEcom/PHP
-      - name: Javascript
-        link: https://github.com/GBSEcom/NPM
-    - title: Packages
-      items:
-      - name: Composer
-        link: "https://packagist.org/packages/first-data/gateway"
-      - name: Maven
-        link: "https://search.maven.org/artifact/com.github.GBSEcom/first-data-gateway"
-      - name: NPM
-        link: "https://www.npmjs.com/package/@firstdata/first-data-gateway"
-      - name: NuGet
-        link: "https://www.nuget.org/packages/FirstData.Gateway"
-      - name: pip
-        link: "https://pypi.org/project/first-data-gateway"
-      - name: Ruby Gem
-        link: "https://rubygems.org/gems/first_data_gateway"
-  - title: Digital Wallets
-    items:
-    - title: Sample Apps
-      items:
-      - name: Apple Pay
-        link: https://docs.firstdata.com/org/gateway/node/158
-      - name: Google Pay
-        link: https://docs.firstdata.com/org/gateway/node/163
-x-tio-request-headers:
-  PaymentsStore:
-    name: TryItOut-Store
-    discriminators:
-    - in: [order, industrySpecificExtensions]
-      enum: [carRental, lodging, airline, mcc6012]
-    - in: [requestType] # NA only: PaymentCardDisbursementTransaction, PaymentTokenDisbursementTransaction, PaymentDeviceDisbursementTransaction, AchPreAuthTransaction, AchSaleTransaction, AchCreditTransaction
-      enum: [SepaSaleTransaction, PaypalCreditTransaction, AliPaySaleTransaction, PaymentCardForcedTicketTransaction, PaymentCardDisbursementTransaction, PaymentTokenDisbursementTransaction, PaymentDeviceDisbursementTransaction, AchPreAuthTransaction, AchSaleTransaction, AchCreditTransaction]
-    - in: [authenticationRequest, authenticationType] # APAC only: UnionPayAuthenticationRequest
-      enum: [UnionPayAuthenticationRequest, Secure3DAuthenticationRequest]
-    - in: [paymentMethod, walletType]
-      enum: [EncryptedGooglePayWalletPaymentMethod]
-# To access top level objects in the request body.
-    - in: []
-      enum: [settlementSplit, currencyConversion]
-    - in: [paymentMethod]
-      enum: [paymentFacilitator]
-  PaymentsFinalizeSecureTransactionStore:
-    name: TryItOut-Store
-    discriminators:
-    - in: [authenticationType] # APAC only: UnionPayAuthenticationUpdateRequest
-      enum: [UnionPayAuthenticationUpdateRequest, Secure3DAuthenticationUpdateRequest]
-  SecondaryPaymentsTransaction:
-    name: TryItOut-Store
-    discriminators:
-    - in: [order, industrySpecificExtensions]
-      enum: [mcc6012]
-    - in: [requestType] # NA only: AchVoidTransaction, AchReturnTransaction, AchPostAuthTransaction
-      enum: [AchVoidTransaction, AchReturnTransaction, AchPostAuthTransaction]
-# To access top level objects in the request body.
-    - in: []
-      enum: [currencyConversion]
-  ExchangeRatesStore:
-    name: TryItOut-Store
-    discriminators:
-    - in: [requestType]
-      enum: [DCCExchangeRateRequest, DynamicPricingExchangeRateRequest]
-  FraudScoreOnlyStore: # NA only
-    name: TryItOut-Store
-    discriminators:
-    - in: [transactionType]
-      enum: [score_only]
-  FraudRegistrationStore:
-    name: TryItOut-Store
-    discriminators:
-    - in: [transactionType]
-      enum: [registration]
 paths:
   /payments:
     post:
       tags:
         - Payment
       x-proxy-name: 'Create Primary Transaction'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/PaymentsStore'
       summary: Generate a primary transaction.
-      description: Use this to originate a financial transaction like a sale, preauthorization, or credit. For payment methods AliPay, PayPal and GooglePay the response will be simulated in Try It Out to reflect a successful response.
+      description: Use this to originate a financial transaction like a sale, preauthorization, or credit.
       operationId: submitPrimaryTransaction
       parameters:
         - $ref: '#/components/parameters/ContentTypeParam'
@@ -194,8 +100,6 @@ paths:
       tags:
         - Payment
       x-proxy-name: 'Finalize Secure Transaction'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/PaymentsFinalizeSecureTransactionStore'
       operationId: finalizeSecureTransaction
       summary: Update a 3DSecure or UnionPay payment and continue processing. # APAC only: UnionPay
       description: Use this to handle a 3DSecure redirect response or UnionPay authentication, updating the transaction and continuing processing.
@@ -244,8 +148,6 @@ paths:
       tags:
       - Payment
       x-proxy-name: 'Secondary Transaction'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/SecondaryPaymentsTransaction'
       summary: Perform a secondary transaction.
       description: Use this to perform a void, postAuth or return secondary transaction. Partial postAuths and returns are allowed.
       operationId: submitSecondaryTransaction
@@ -519,8 +421,6 @@ paths:
       tags:
         - Fraud Detect
       x-proxy-name: 'Score Only'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/FraudScoreOnlyStore'
       summary: Score a transaction for fraud.
       description: Use this to obtain a fraud score for a transaction.
       operationId: scoreOnly
@@ -562,8 +462,6 @@ paths:
       tags:
         - Fraud Detect
       x-proxy-name: 'Client Registration'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/FraudRegistrationStore'
       summary: Client registration for fraud detect transaction.
       description: Use this to register client for fraud detect transaction.
       parameters:
@@ -603,8 +501,6 @@ paths:
       tags:
         - Fraud Detect
       x-proxy-name: 'Payment Registration'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/FraudRegistrationStore'
       summary: Payment registration for fraud detect transaction.
       description: Use this to register payment for fraud detect transaction.
       parameters:
@@ -1040,8 +936,6 @@ paths:
       tags:
         - Currency Conversion
       x-proxy-name: 'Currency Conversion Inquiry'
-      x-tio-request-headers:
-        - $ref: '#/x-tio-request-headers/ExchangeRatesStore'
       summary: Generate dynamic currency conversion transactions.
       description: Sale, return and lookup exchange rate with dynamic currency conversion option.
       operationId: getExchangeRate
@@ -1152,11 +1046,19 @@ paths:
           $ref: '#/components/responses/NotFound'
         500:
           $ref: '#/components/responses/ServerError'
+# store-management section (not payment related)
 components:
 #-------------------------------------------------------------------------------
 # Parameter Models
 #-------------------------------------------------------------------------------
   parameters:
+    ApiUserIdParam:
+      name: api-user-id
+      schema:
+        type: string
+      in: path
+      required: true
+      description: Api User identifier.
     ContentTypeParam:
       name: Content-Type
       schema:
@@ -1282,6 +1184,31 @@ components:
       in: query
       required: false
       description: An optional outlet ID for clients that support multiple stores in the same developer app.
+    StoreIdPathParam:
+      name: store-id
+      schema:
+        type: string
+      in: path
+      required: true
+      description: An optional outlet ID for clients that support multiple stores in the same developer app.
+    TerminalIdQueryParam:
+      name: terminalId
+      schema:
+        type: string
+        pattern: '[0-9A-Za-z]{1,8}'
+      in: query
+      required: false
+      description: The terminal ID identifies a terminal.
+    TraceNumberQueryParam:
+      name: traceNumber
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 999999
+      in: query
+      required: false
+      description: The trace number being used for the clearing process.
     TokenIdParam:
       name: token-id
       schema:
@@ -1296,6 +1223,42 @@ components:
       in: query
       required: false
       description: The transaction time in seconds since epoch.
+    TokenIdentifierQueryParam:
+      name: tokenIdentifier
+      schema:
+        type: string
+      in: query
+      required: false
+      description: An optional token identifier which indicates the blocked card number.
+    DomainQueryParam:
+      name: domain
+      schema:
+        type: string
+      in: query
+      required: false
+      description: An optional domain name which indicates the blocked domain.
+    NameQueryParam:
+      name: name
+      schema:
+        type: string
+      in: query
+      required: false
+      description: An optional name which indicates the blocked name.
+    IpAddressQueryParam:
+      name: ipAddress
+      schema:
+        type: string
+      in: query
+      required: false
+      description: An optional IP address which indicates the blocked IP address.
+    ConnectModeQueryParam:
+      name: connectMode
+      schema:
+        type: string
+        enum: [Classic, Combined]
+      in: query
+      required: true
+      description: The type of connect mode.
 #-------------------------------------------------------------------------------
 # HTTP Response Models
 #-------------------------------------------------------------------------------
@@ -1388,7 +1351,7 @@ components:
           schema:
             $ref: '#/components/schemas/SecondaryTransaction'
       required: true
-      description: 'Accepted request types: PostAuthTransaction, VoidTransaction, VoidPreAuthTransactions, ReturnTransaction, AchPostAuthTransaction, AchVoidTransaction, AchReturnTransaction and PreAuthSecondaryTransaction.'
+      description: 'Accepted request types: PostAuthTransaction, VoidTransaction, VoidPreAuthTransactions, ReturnTransaction, AchPostAuthTransaction, AchVoidTransaction and AchReturnTransaction.'
     PaymentSchedulesRequest:
       content:
         application/json:
@@ -1406,6 +1369,119 @@ components:
 # Schemas
 #-------------------------------------------------------------------------------
   schemas:
+    SofortSetup:
+      description: Sofort setup.
+      properties:
+        customerId:
+          description: Sofort customer identifier.
+          type: string
+          pattern: '^[0-9]+$'
+          maxLength: 10
+          example: 88649
+        projectId:
+          description: Sofort project identifier.
+          type: string
+          format: string
+          pattern: '^[0-9]+$'
+          maxLength: 10
+          example: 183129
+        apiKey:
+          description: API key provided by Sofort.
+          type: string
+          format: string
+          pattern: '^[a-z0-9]+$'
+          maxLength: 40
+          example: 9e6c99f4be0d29c0e28bf5c0154ac00a
+      required:
+        - customerId
+        - projectId
+        - apiKey
+      example:
+        customerId: 88649
+        projectId: 183129
+        apiKey: 9e6c99f4be0d29c0e28bf5c0154ac00a
+    SofortSetupResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            SofortSetup:
+              $ref: '#/components/schemas/SofortSetup'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        SofortSetup:
+          merchantId: 003060650
+          subID: 0
+    IdealSetup:
+      description: Ideal setup.
+      properties:
+        merchantId:
+          description: Ideal Merchant identifier.
+          type: string
+          pattern: '^[0-9]+$'
+          maxLength: 30
+          example: '003060650'
+        subID:
+          description: Ideal Sub identifier.
+          type: string
+          format: string
+          pattern: '^[0-9]+$'
+          maxLength: 30
+          example: '0'
+      required:
+        - merchantId
+        - subID
+      example:
+        merchantId: '003060650'
+        subID: '0'
+    IdealSetupResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            IdealSetup:
+              $ref: '#/components/schemas/IdealSetup'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        IdealSetup:
+          merchantId: '003060650'
+          subID: '0'
+    GenerateCertificateResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            zipFile:
+              type: string
+              format: base64
+              description: Zip file containing new private key and signed certificate in PKCS#12 and JKS format, encoded in Base64.
+              example: 'dGhpcyBpcyBhbiBleGFtcGxlIHdoZXJlIGNlcnRpZmljYXRlIG11c3QgYmU='
+            privateKeyPassword:
+              type: string
+              description: Password for PKCS#12 / Private Key Password.
+              example: 'kb$w@4YcV'
+          required:
+          - zipFile
+          - privateKeyPassword
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        zipFile: 'dGhpcyBpcyBhbiBleGFtcGxlIHdoZXJlIGNlcnRpZmljYXRlIG11c3QgYmU='
+        privateKeyPassword: 'kb$w@4YcV'
+    GenerateCertificateFromCsrResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            certificate:
+              type: string
+              format: base64
+              description: Certificate file (x509) encoded in Base64.
+              example: 'dGhpcyBpcyBhbiBleGFtcGxlIHdoZXJlIGNlcnRpZmljYXRlIG11c3QgYmU='
+          required:
+          - certificate
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        certificate: 'dGhpcyBpcyBhbiBleGFtcGxlIHdoZXJlIGNlcnRpZmljYXRlIG11c3QgYmU='
     BasicResponse:
       description: Contains apiTraceId and clientRequestId shared in all response types.
       properties:
@@ -1467,7 +1543,7 @@ components:
         - $ref: '#/components/schemas/BasicResponse'
         - properties:
             orderId:
-              description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM). 
+              description: Client order ID if supplied by client, otherwise the order ID.
               type: string
               example: '123456'
             billing:
@@ -1512,6 +1588,60 @@ components:
                 region: 'Georgia'
                 postalCode: '30303'
                 country: 'USA'
+    BrandingStyleConfigurationResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            stores:
+              type: array
+              items:
+                $ref: '#/components/schemas/BrandingStyleConfigurationResult'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        stores:
+          - id: '12099500044'
+            status: 'SUCCESS. Style properties was changed successfully.'
+          - id: '12099500088'
+            status: 'SUCCESS. Style properties was changed successfully.'
+    DeleteBrandingStyleConfigurationResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            storeId:
+              description: Store ID number.
+              type: string
+              example: '12345500000'
+            status:
+              description: Status from delete branding style configuration process.
+              type: string
+              example: 'SUCCESS. Style properties were successfully reset to default.'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        storeId: '12099500044'
+        status: 'SUCCESS. Style properties were successfully reset to default.'
+    InitiateClearingResponse:
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - type: object
+          properties:
+            requestStatus:
+              description: Request status. If it is anything other than 'SUCCESS', please refer to 400s HTTP error codes or decline. See Error object for details.
+              type: string
+              enum: [SUCCESS, PROCESSING_FAILED, FAILURE]
+              example: 'SUCCESS'
+            clearingDetails:
+              $ref: '#/components/schemas/ClearingDetails'
+            endpointResponses:
+              description: The array holds response information of the involved endpoints.
+              type: array
+              items:
+                $ref: '#/components/schemas/EndpointResponse'
+          example:
+            clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+            apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+            requestStatus: 'SUCCESS'
     PaymentTokenUpdateResponse:
       allOf:
         - $ref: '#/components/schemas/BasicResponse'
@@ -1566,7 +1696,7 @@ components:
             processor:
               $ref: '#/components/schemas/ProcessorData'
             orderId:
-              description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+              description: Client order ID if supplied by client, otherwise the order ID.
               type: string
               example: 'R-44df6542-ae0b-4415-88e8-7f3e62cc9e5d'
             ipgTransactionId:
@@ -1624,7 +1754,7 @@ components:
               enum: [SUCCESS, VALIDATION_FAILED, PROCESSING_FAILED, FAILURE, DECLINED]
               example: 'SUCCESS'
             orderId:
-              description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+              description: Client order ID if supplied by client, otherwise the order ID.
               type: string
               example: '123456'
             transactionResponse:
@@ -1709,7 +1839,7 @@ components:
             example: 'SUCCESS'
           orderId:
             type: string
-            description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+            description: Client order ID if supplied by client, otherwise the order ID.
             example: '123456'
           paymentUrl:
             description: URL for embedded payment link.
@@ -1743,6 +1873,28 @@ components:
         orderId: '9723846'
         requestTime: '1518811817'
         status: 'Created'
+    StoreUrlConfigurationResponse:
+      description: Response from a store url configuration request.
+      allOf:
+      - $ref: '#/components/schemas/BasicResponse'
+      - properties:
+          stores:
+            type: array
+            items:
+              $ref: '#/components/schemas/StoreUrlConfigurationResult'
+            example:
+              - id: '12099500088'
+                status: 'SUCCESS. Connect url settings was changed successfully.'
+              - id: '12099500044'
+                status: 'SUCCESS. Connect url settings was changed successfully.'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        stores:
+          - id: '12099500088'
+            status: 'SUCCESS. Connect url settings was changed successfully.'
+          - id: '12099500044'
+            status: 'SUCCESS. Connect url settings was changed successfully.'
     TransactionResponse:
       description: Common object for primary and secondary payment request responses.
       allOf:
@@ -1753,7 +1905,7 @@ components:
             type: string
             example: '838916029301'
           orderId:
-            description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+            description: Client order ID if supplied by client, otherwise the order ID.
             type: string
             example: '123456'
           transactionType:
@@ -1822,11 +1974,6 @@ components:
             $ref: '#/components/schemas/AchResponse'
           currencyConversionResponse:
             $ref: '#/components/schemas/CurrencyConversionResponse'
-          steps:
-            description: 'Steps to be performed by the payer.'
-            type: array
-            items:
-              $ref: '#/components/schemas/PaymentStepRequest'
       example:
         clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
         apiTraceId: 'rrt-0c80a3403e2c2def0-d-ea-28805-6810951-2'
@@ -1929,7 +2076,7 @@ components:
         transactionAmount:
           total: "25.24"
           currency: 'GBP'
-        startDate: '2021-12-31'
+        startDate: '2020-11-16'
         frequency:
           every: 1
           unit: 'MONTH'
@@ -1937,8 +2084,8 @@ components:
           paymentCard:
             number: '5424180279791732'
             expiryDate:
-              month: '12'
-              year: '25'
+              month: '03'
+              year: '21'
             securityCode: '977'
             brand: 'VISA'
     ReferencedOrderPaymentSchedulesRequest:
@@ -1957,7 +2104,7 @@ components:
       example:
         requestType: 'ReferencedOrderPaymentSchedulesRequest'
         referencedOrderId: 'R-f9c2c198-b7cc-491a-a711-93d22fd0e589'
-        startDate: '2021-12-31'
+        startDate: '2020-11-16'
         numberOfPayments: 10
         maximumFailures: 1
         invoiceNumber: '96126098'
@@ -1975,7 +2122,6 @@ components:
           country: 'USA'
     PaymentSchedulesRequest:
       description: Request to create a gateway schedule. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
         - requestType
         - transactionAmount
@@ -2033,7 +2179,7 @@ components:
         clientLocale:
           $ref: '#/components/schemas/ClientLocale'
         orderId:
-          description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+          description: Client order ID if supplied by client.
           type: string
           example: '123456'
         billing:
@@ -2046,7 +2192,7 @@ components:
           example: 'This scheduled payment series is to pay for the thing.'
       example:
         requestType: 'PaymentMethodPaymentSchedulesRequest'
-        startDate: '2021-12-31'
+        startDate: '2020-11-16'
         numberOfPayments: 10
         maximumFailures: 1
         invoiceNumber: '96126098'
@@ -2061,7 +2207,7 @@ components:
             number: "5426064000424979"
             expiryDate:
               month: "12"
-              year: "25"
+              year: "20"
             securityCode: "147"
             cardFunction: "CREDIT"
         transactionAmount:
@@ -2191,7 +2337,7 @@ components:
           number: '4035874000424977'
           expiryDate:
             month: '12'
-            year: '25'
+            year: '20'
           securityCode: '977'
         billingAddress:
           address1: '5565 Glenridge Conn'
@@ -2201,7 +2347,6 @@ components:
     AccountVerificationRequest:
       description: Request to verify payment card or payment token. Abstract class, do not use this class directly, use one of its children.
       type: object
-      x-hide-model: true
       required:
         - requestType
       discriminator:
@@ -2231,7 +2376,7 @@ components:
           number: '4035874000424977'
           expiryDate:
             month: '12'
-            year: '25'
+            year: '20'
           securityCode: '977'
         billingAddress:
           address1: '5565 Glenridge Conn'
@@ -2254,7 +2399,7 @@ components:
             number: '4035874000424977'
             expiryDate:
               month: '12'
-              year: '25'
+              year: '20'
             securityCode: '977'
           billingAddress:
             address1: '5565 Glenridge Conn'
@@ -2319,7 +2464,7 @@ components:
           number: '4035874000424977'
           expiryDate:
             month: '12'
-            year: '25'
+            year: '20'
           securityCode: '977'
         billingAddress:
           address1: '5565 Glenridge Conn'
@@ -2360,8 +2505,15 @@ components:
           reusable: true
           declineDuplicates: false
         accountVerification: true
+    BrandingStyleConfigurationRequest:
+      description: Request to update branding style properties for store.
+      properties:
+        stores:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreBrandingStyleConfiguration'
+          minItems: 1
     PaymentCardPaymentTokenUpdateRequest:
-      x-hide-model: true
       description: Request to update payment token for one or more cards.
       discriminator:
         propertyName: requestType
@@ -2395,7 +2547,7 @@ components:
              number: '5424180279791732'
              expiryDate:
                month: '03'
-               year: '25'
+               year: '21'
              securityCode: '977'
          - value: '9877hkhk68688888ffgh'
            reusable: true
@@ -2407,7 +2559,6 @@ components:
                year: '22'
              securityCode: '123'
     PaymentTokenizationRequest:
-      x-hide-model: true
       description: Used to generate payment tokens. Abstract class, do not use this class directly, use one of its children.
       discriminator:
         propertyName: requestType
@@ -2570,6 +2721,19 @@ components:
             month: '12'
             year: '24'
             securityCode: '977'
+    StoreUrlConfigurationResult:
+      properties:
+        id:
+          description: An optional outlet id for clients that support multiple stores in the same developer app.
+          type: string
+          example: '12345500000'
+        status:
+          description: Status from store url configuration process.
+          type: string
+          example: 'SUCCESS. Connect url settings was changed successfully.'
+      example:
+          id: '12099500044'
+          status: 'SUCCESS. Connect url settings was changed successfully.'
     CardFunction:
       description: Card function. This field is required when performing transactions for Brazil merchants.
       type: string
@@ -2638,6 +2802,226 @@ components:
         responseMessage: 'APPROVED'
         authorizationCode: 'OK7118'
         network: 'NYCE'
+    StoreFraudSettings:
+      description: Object for fraud settings.
+      required:
+        - id
+        - fraudSettings
+      properties:
+        id:
+          description: The outlet identificator.
+          type: string
+          example: '12345500000'
+        fraudSettings:
+          $ref: '#/components/schemas/FraudSettings'
+      example:
+        id: '12345500000'
+        fraudSettings:
+          blockedItems:
+            blockCard:
+              cardNumber: '5424180279791758'
+            blockDomain:
+              domain: 'co.uk'
+          maximumPurchaseAmount:
+            currency: 'EUR'
+            maxAmount: '5555'
+          lockoutTime:
+            autoLockoutTime: '4'
+            duplicateLockoutTime: '3'
+          countryProfile:
+            profile: '99'
+    StoreFraudSettingsResult:
+      description: Object that holds result from update fraud settings request.
+      properties:
+        id:
+          description: An outlet identificator.
+          type: string
+          example: '12345500000'
+        blockedCardIdentifier:
+          $ref: '#/components/schemas/TokenIdentifier'
+        status:
+          description: Status from fraud settings.
+          type: string
+          example: 'SUCCESS'
+      example:
+        id: '12345500000'
+        blockedCardIdentifier:
+          tokenIdentifier: '570e66b0d4fd91b27155a36911220e0e98d0db7e22fcf0b86544fdf175c707d0'
+        status: 'SUCCESS. Fraud settings was updated successfully.'
+    FraudSettings:
+      description: Object that holds all fraud settings.
+      properties:
+        blockedItems:
+          $ref: '#/components/schemas/BlockedItems'
+        maximumPurchaseAmount:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaximumPurchaseAmount'
+          example:
+            - currency: 'EUR'
+              maxAmount: '5555'
+            - currency: 'USD'
+              maxAmount: '7755'
+        lockoutTime:
+          $ref: '#/components/schemas/LockoutTime'
+        countryProfile:
+          $ref: '#/components/schemas/CountryProfile'
+      example:
+        blockedItems:
+          blockCard:
+            cardNumber: '5424180279791758'
+          blockDomain:
+            domain: 'co.uk'
+        maximumPurchaseAmount:
+          - currency: 'EUR'
+            maxAmount: '5555'
+          - currency: 'USD'
+            maxAmount: '7855'
+        lockoutTime:
+          autoLockoutTime: '4'
+          duplicateLockoutTime: '3'
+        countryProfile:
+          profile: '99'
+    LockoutTime:
+      description: Object that holds information about lockout times.
+      properties:
+        autoLockoutTime:
+          description: Auto-lockout time.
+          type: integer
+          example: '3'
+        duplicateLockoutTime:
+          description: Duplicate lockout time.
+          type: integer
+          example: '4'
+      example:
+        autoLockoutTime: '4'
+        duplicateLockoutTime: '3'
+    CountryProfile:
+      description: Object that holds information about country.
+      properties:
+        profile:
+          description: Country profile.
+          type: integer
+          example: '99'
+      example:
+        profile: '99'
+    TokenIdentifier:
+      description: Token identifier object.
+      properties:
+        tokenIdentifier:
+          description: Token identifier.
+          type: string
+          example: '00ef9c73d065da1e01b9439998aca5cd6c73ff178660570c8743ed2e4a700f56'
+      example:
+        tokenIdentifier: '00ef9c73d065da1e01b9439998aca5cd6c73ff178660570c8743ed2e4a700f56'
+    MaximumPurchaseAmount:
+      description: Object that holds information about maximum purchase amount limit.
+      required:
+      - currency
+      - maxAmount
+      properties:
+        currency:
+          description: Currency in alphabetic ISO 4217 currency code format.
+          type: string
+          example: 'EUR'
+        maxAmount:
+          description: Maximum purchase amount limit.
+          type: string
+          example: '9999'
+      example:
+        currency: 'EUR'
+        maxAmount: '9999'
+    BlockedCardNumber:
+      description: Object that holds information about blocked card numbers.
+      properties:
+        cardNumber:
+          description: Use this field to send clear PAN or tokens other than TransArmor Token.
+          type: string
+          example: '5424180279791732'
+        tokenIdentifier:
+          description: Token identifier.
+          type: string
+          example: '00ef9c73d065da1e01b9439998aca5cd6c73ff178660570c8743ed2e4a700f56'
+      example:
+        cardNumber: '5424180279791732'
+        tokenIdentifier: '00ef9c73d065da1e01b9439998aca5cd6c73ff178660570c8743ed2e4a700f56'
+    BlockedItems:
+      description: Object that holds information about items that should be blocked.
+      properties:
+        blockCard:
+          $ref: '#/components/schemas/BlockCard'
+        blockDomain:
+          $ref: '#/components/schemas/BlockDomain'
+        blockName:
+          $ref: '#/components/schemas/BlockName'
+        blockIPAddress:
+          $ref: '#/components/schemas/BlockIPAddress'
+      example:
+        blockCard:
+          cardNumber: '5424180279791758'
+        blockDomain:
+          domain: 'co.uk'
+        blockName:
+          name: 'name123'
+        blockIPAddress:
+          ipAddress: '123.56.34.12'
+    BlockCard:
+      description: Object that holds information about card that should be blocked.
+      properties:
+        cardNumber:
+          description: Use this field to send clear PAN or tokens other than TransArmor Token.
+          type: string
+          example: '5424180279791732'
+        orderId:
+          description: Client order ID.
+          type: string
+          example: '123456'
+        merchantTransactionId:
+          description: The unique merchant transaction ID.
+          type: string
+          maxLength: 40
+          example: 'lsk23532djljff3'
+      example:
+        cardNumber: '5424180279791732'
+        orderId: '123456'
+        merchantTransactionId: 'lsk23532djljff3'
+    BlockDomain:
+      description: Object that holds information about domain that should be blocked.
+      properties:
+        domain:
+          description: Use this field to send domain name to be blocked.
+          type: string
+          example: 'co.uk'
+      example:
+        domain: 'co.uk'
+    BlockName:
+      description: Object that holds information about name that should be blocked.
+      properties:
+        name:
+          description: Use this field to send name to be blocked.
+          type: string
+          example: 'name'
+        orderId:
+          description: Client order ID.
+          type: string
+          example: '123456'
+      example:
+        name: 'name1'
+        orderId: '123456'
+    BlockIPAddress:
+      description: Object that holds information about IP address that should be blocked.
+      properties:
+        ipAddress:
+          description: Use this field to send IP address to be blocked.
+          type: string
+          example: '104.56.45.132'
+        orderId:
+          description: Client order ID.
+          type: string
+          example: '123456'
+      example:
+        ipAddress: '104.56.45.132'
+        orderId: '123456'
     Error:
       description: Error information.
       properties:
@@ -2738,30 +3122,6 @@ components:
         paymentMethod:
           payPal:
             recipientEmail: 'John@tester.com'
-    ApmSaleTransaction:
-      description: Request to create sale transaction using an alternative payment method (see methods supported by this transaction type below).
-      allOf:
-        - $ref: '#/components/schemas/PrimaryTransaction'
-        - type: object
-          required:
-            - paymentMethod
-          properties:
-            paymentMethod:
-              $ref: '#/components/schemas/ApmPaymentMethod'
-      example:
-        transactionAmount:
-          total: '40.00'
-          currency: 'PLN'
-        requestType: 'ApmSaleTransaction'
-        paymentMethod:
-          'type': 'BLIK'
-          steps:
-            - 'type': provide-detail
-              detailKey: BLIK_CODE
-              detailValue: 777123
-            - 'type': provide-detail
-              detailKey: user-agent
-              detailValue: 'SonyEricssonT68/R201A'
     ChinaPnRSaleTransaction: # APAC only
       description: Request to create sale transaction using China PnR.
       allOf:
@@ -3148,8 +3508,8 @@ components:
           paymentCard:
             number: '5424180279791732'
             expiryDate:
-              month: '12'
-              year: '25'
+              month: '03'
+              year: '21'
             securityCode: '977'
     PaymentTokenDisbursementTransaction:
       description: Request to create disbursement transaction using a payment token.
@@ -3693,7 +4053,6 @@ components:
         referenceNumber: '12345678'
         accountNumber: '135246'
     PrimaryTransaction:
-      x-hide-model: true
       description: Provides shared fields for all PrimaryTransaction request types. Abstract class, do not use this class directly, use one of its children.
       required:
         - requestType
@@ -3917,27 +4276,8 @@ components:
         transactionAmount:
           total: '12.04'
           currency: 'USD'
-    PreAuthSecondaryTransaction:
-      description: Request to perform pre-auth incremental secondary transaction without providing credit card information.
-      allOf:
-      - $ref: '#/components/schemas/SecondaryTransaction'
-      - type: object
-        required:
-        - transactionAmount
-        properties:
-          transactionAmount:
-            $ref: '#/components/schemas/Amount'
-          decrementalFlag:
-            $ref: '#/components/schemas/DecrementalPreAuthFlag'
-      example:
-        requestType: 'PreAuthSecondaryTransaction'
-        transactionAmount:
-          total: '5.00'
-          currency: 'USD'
-        decrementalFlag: false
     SecondaryTransaction:
       description: Model for secondary financial transactions. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
         - requestType
       discriminator:
@@ -4161,10 +4501,6 @@ components:
           description: Tip amount.
           type: number
           example: 6.00
-        surcharge:
-          description: Surcharge amount.
-          type: number
-          example: 2.50
       example:
         subtotal: 8.00
         vatAmount: 0
@@ -4172,7 +4508,432 @@ components:
         shipping: 1.24
         cashback: 2.00
         tip: 6.00
-        surcharge: 2.50
+    StoreBrandingStyleConfiguration: # Store management
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          description: An optional outlet id for clients that support multiple stores in the same developer app.
+          type: string
+          example: '12345500000'
+        combined:
+          $ref: '#/components/schemas/CombinedMode'
+        classic:
+          $ref: '#/components/schemas/ClassicMode'
+      example:
+        id: '12099500088'
+        combined:
+          background:
+            topBar:
+              color: '#FFEE00'
+        classic:
+          backgroundColor:
+            header:
+              color: '#FFEE00'
+    CombinedMode:
+      description: Object contains combined mode branding style properties.
+      type: object
+      properties:
+        logo:
+          $ref: '#/components/schemas/Logo'
+        background:
+          $ref: '#/components/schemas/Background'
+        text:
+          $ref: '#/components/schemas/Text'
+        button:
+          $ref: '#/components/schemas/Button'
+      example:
+        combined:
+          logo:
+            position: 'BOTTOM'
+            filename: 'image.png'
+            data: 'iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAhFBMVEX///8AAADv7+/r6+v6+vooKCjg4ODMzMzQ0ND19fX8/Pxvb'
+          background:
+            topBar:
+              color: '#FFEE00'
+          text:
+            title:
+              color: '#FFEE00'
+          button:
+            primary:
+              color: '#FFEE00'
+    ClassicMode:
+      description: Object contains classic mode branding style properties.
+      properties:
+        backgroundColor:
+          $ref: '#/components/schemas/BackgroundColor'
+        mobile:
+          $ref: '#/components/schemas/Mobile'
+        amountTitle:
+          $ref: '#/components/schemas/FontProperties'
+        superscription:
+          $ref: '#/components/schemas/FontProperties'
+        individualText:
+          $ref: '#/components/schemas/FontProperties'
+        label:
+          $ref: '#/components/schemas/FontProperties'
+        normalText:
+          $ref: '#/components/schemas/FontProperties'
+        buttons:
+          $ref: '#/components/schemas/Properties'
+        anchor:
+          $ref: '#/components/schemas/Properties'
+        systemMessages:
+          $ref: '#/components/schemas/Properties'
+      example:
+        classic:
+          backgroundColor:
+            header:
+              color: '#FFEE00'
+            label:
+              fontFace: 'arial'
+              fontSize: 'xx-small'
+              fontWeight: 'normal'
+              fontColor: '#FFEE00'
+    Color:
+      description: Hexadecimal color value.
+      type: string
+      pattern: '(^(0[xX]){1}[A-Fa-f0-9]+$)|(^#[A-Fa-f0-9]{6}$)'
+      example: '#FFEE00'
+    Logo:
+      description: Object contains logo data.
+      type: object
+      required:
+       - position
+       - filename
+       - data
+      properties:
+        position:
+          description: Define position of logo.
+          type: string
+          enum: [TOP, BOTTOM]
+          example: 'BOTTOM'
+        filename:
+          description: The filename of the uploaded logo.
+          type: string
+          example: 'image.png'
+        data:
+          description: Base64 image data.
+          type: string
+          format: byte
+          example: 'herijqei34u93i49139rwgarstfeasewrQTE+ERWRF'
+      example:
+        position: 'BOTTOM'
+        filename: 'image.png'
+        data: 'iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAhFBMVEX///8AAADv7+/r6+v6+vooKCjg4ODMzMzQ0ND19fX8/Pxvb'
+    Background:
+      description: Object contains background style properties.
+      type: object
+      properties:
+        topBar:
+          $ref: '#/components/schemas/TopBar'
+        body:
+          $ref: '#/components/schemas/Body'
+        content:
+          $ref: '#/components/schemas/Content'
+        borders:
+          $ref: '#/components/schemas/Borders'
+      example:
+        topBar:
+          color: '#FFEE00'
+        body:
+          color: '#FFEE00'
+        content:
+          color: '#FFEE00'
+    TopBar:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Body:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Content:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Borders:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Header:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Footer:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Text:
+      description: Object contains text style properties.
+      type: object
+      properties:
+        primary:
+          $ref: '#/components/schemas/Primary'
+        title:
+         $ref: '#/components/schemas/Title'
+      example:
+        primary:
+          color: '#FFEE00'
+        title:
+          color: '#FFEE00'
+    Primary:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Title:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    Button:
+      description: Object contains button style properties.
+      type: object
+      properties:
+        primary:
+          $ref: '#/components/schemas/Primary'
+        hover:
+          $ref: '#/components/schemas/Hover'
+      example:
+        primary:
+          color: '#FFEE00'
+        hover:
+          color: '#FFEE00'
+    Hover:
+      type: object
+      properties:
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        color: '#FFEE00'
+    BackgroundColor:
+      description: Object contains background color properties.
+      type: object
+      properties:
+        header:
+          $ref: '#/components/schemas/Header'
+        content:
+          $ref: '#/components/schemas/Content'
+        footer:
+          $ref: '#/components/schemas/Footer'
+      example:
+        header:
+          color: '#FFEE00'
+        content:
+          color: '#FFEE00'
+        footer:
+          color: '#FFEE00'
+    Mobile:
+      description: Object contains configurable style properties for mobile.
+      type: object
+      properties:
+        headerArea:
+          type: object
+          properties:
+            color:
+              $ref: '#/components/schemas/Color'
+          example:
+            color: '#FFEE00'
+        showLogo:
+          description: check if logo should be shown
+          type: boolean
+          example: true
+      example:
+        headerArea:
+          color: '#FFEE00'
+        showLogo: true
+    FontProperties:
+      description: Object contains font properties.
+      type: object
+      properties:
+        fontFace:
+          $ref: '#/components/schemas/FontFace'
+        fontSize:
+          $ref: '#/components/schemas/FontSize'
+        fontWeight:
+          $ref: '#/components/schemas/FontWeight'
+        fontColor:
+          $ref: '#/components/schemas/Color'
+      example:
+        fontFace: 'arial'
+        fontSize: 'xx-small'
+        fontWeight: 'normal'
+        color: '#FFEE00'
+    Properties:
+      description: Object contains font and color properties.
+      type: object
+      properties:
+        fontFace:
+          $ref: '#/components/schemas/FontFace'
+        fontSize:
+          $ref: '#/components/schemas/FontSize'
+        fontWeight:
+          $ref: '#/components/schemas/FontWeight'
+        fontColor:
+          $ref: '#/components/schemas/Color'
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        fontFace: 'arial'
+        fontSize: 'xx-small'
+        fontWeight: 'normal'
+        fontColor: '#FFEE00'
+        color: '#FFEE00'
+    FontFace:
+      description: Font face property.
+      type: string
+      enum: [arial, courier new, times new roman, trebuchet ms, verdana]
+      example: arial
+    FontSize:
+      description: Font size property.
+      type: string
+      example: xx-small
+    FontWeight:
+      description: Font weight property.
+      type: string
+      enum: [normal, bold]
+      example: normal
+    BrandingStyleConfigurationResult:
+      type: object
+      properties:
+        id:
+          description: An optional outlet id for clients that support multiple stores in the same developer app.
+          type: string
+          example: '12345500000'
+        status:
+          description: Status from branding style configuration process.
+          type: string
+          example: 'SUCCESS. Style properties were changed successfully.'
+      example:
+          - id: '12099500044'
+            status: 'SUCCESS. Style properties were changed successfully.'
+          - id: '12099500088'
+            status: 'SUCCESS. Style properties were changed successfully.'
+    ClearingDetails:
+      description: Contains clearing related response information.
+      type: object
+      properties:
+        clearingElements:
+          description: The array contains information about the clearing elements.
+          type: array
+          items:
+            $ref: '#/components/schemas/ClearingElement'
+          example:
+            - clearingElement:
+                brand: 'VISA'
+                value: '1234'
+                count: '1234'
+            - clearingElement:
+                brand: 'AMEX'
+                value: '4321'
+                count: '999'
+        batchTimeStamp:
+          description: Timestamp when the clearing has been processed. The used format is "YYYYMMDDhhmmss".
+          type: string
+          pattern: '[0-9]{14}'
+          example: '20190501094321'
+        receiptNumberFrom:
+          description: Start receipt number for the clearing process.
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 9999
+          example: '2520'
+        receiptNumberTo:
+          description: End receipt number for the clearing process.
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 9999
+          example: '2567'
+        traceNumber:
+          description: Trace number for the clearing process.
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 999999
+          example: '113744'
+      example:
+        clearingElements:
+          - clearingElement:
+              brand: 'VISA'
+              value: '1234'
+              count: '1234'
+          - clearingElement:
+              brand: 'AMEX'
+              value: '4321'
+              count: '999'
+        batchTimeStamp: '20190501094321'
+        receiptNumberFrom: '2520'
+        receiptNumberTo: '2565'
+        traceNumber: '113744'
+    ClearingElement:
+      description: Holds brand specific clearing information.
+      type: object
+      properties:
+        brand:
+          description: Contains the brand of the card.
+          type: string
+          example: 'VISA'
+        value:
+          description: Holds the total clearing value computed for a specific brand.
+          type: integer
+          format: int64
+          example: '1234'
+        count:
+          description: Specifies the amount of clearing elements for a given brand.
+          type: integer
+          format: int32
+          example: '1234'
+      example:
+        brand: 'AMEX'
+        value: '4545'
+        count: '123'
+    EndpointResponse:
+      description: Provides clearing response information for the specific endpoint.
+      type: object
+      properties:
+        endpointID:
+          description: Specifies the identifier of an endpoint.
+          type: string
+          example: 'CAFEX VISA'
+        status:
+          description: Defines the clearing status of an endpoint.
+          type: string
+          enum: [APPROVED, DECLINED, FAILED]
+          example: 'APPROVED'
+        batchNumber:
+          description: Defines the batch number of an endpoint clearing process.
+          type: string
+          example: '000'
+      example:
+        endpointID: 'CAFEX VISA'
+        status: 'APPROVED'
+        batchNumber: '000'
     ResponseAmountComponents:
       description: Amount component details, used in responses.
       allOf:
@@ -4213,94 +4974,6 @@ components:
           customerId: 'ID3Bs'
           bankId: '123456'
         brand: 'CUP_DOMESTIC'
-    ApmPaymentMethod:
-      description: Payment method containing APM specific information, which is intentionally weakly-typed to allow for reduced coupling of APM plugins.
-      allOf:
-        - $ref: '#/components/schemas/PaymentMethod'
-        - type: object
-          required:
-            - 'type'
-          properties:
-            'type':
-              description: 'Type of paymentMethod. Supported types: BLIK'
-              $ref: '#/components/schemas/PaymentMethodType'
-            steps:
-              type: array
-              items:
-                $ref: '#/components/schemas/PaymentStepResponse'
-              description: 'All steps (already) performed on the payment'
-      example:
-        'type': BLIK
-        steps:
-          - 'type': provide-detail
-            detailKey: BLIK_CODE
-            detailValue: 777123
-    PaymentStepRequest:
-      description: Request a step from the payer or merchant, e.g. providing information.
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/StepRequest'
-    ProvideDetailPaymentStepRequest:
-      description: Request to inquire information from the payer or merchant.
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/PaymentStepRequest'
-        - type: object
-          properties:
-            hint:
-              type: string
-            javaScriptValidationExpression:
-              type: string
-            key:
-              type: string
-            label:
-              type: string
-    StepRequest:
-      description: Request to perform a step, e.g. redirection to APM hosted payment page. When all steps are complete, the transaction can be processed.
-      required:
-        - 'type'
-      type: object
-      properties:
-        'type':
-          type: string
-          example: provide-detail
-      discriminator:
-        propertyName: 'type'
-        mapping:
-          provide-detail: '#/components/schemas/ProvideDetailPaymentStepRequest'
-    PaymentStepResponse:
-      description: Response to a payment step request
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/StepResponse'
-    ProvideDetailPaymentStepResponse:
-      description: Non-technical detail provided by the payer or merchant.
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/PaymentStepResponse'
-        - type: object
-          properties:
-            detailKey:
-              description: MerchantIdentifier of the provided detail.
-              type: string
-              example: BLIK_CODE
-            detailValue:
-              description: "Value provided by the payer or merchant, validated by JavaScript regular\
-                  \ expression"
-              type: string
-              example: "777712"
-    StepResponse:
-      required:
-        - 'type'
-      type: object
-      properties:
-        'type':
-          type: string
-          example: provide-detail
-      discriminator:
-        propertyName: 'type'
-        mapping:
-          provide-detail: '#/components/schemas/ProvideDetailPaymentStepResponse'
     EncryptedApplePayWalletPaymentMethod:
       description: Wallet payment method containing encrypted Apple Pay information.
       allOf:
@@ -4549,8 +5222,8 @@ components:
         paymentCard:
           number: '5424180279791732'
           expiryDate:
-            month: '12'
-            year: '25'
+            month: '03'
+            year: '21'
           securityCode: '977'
         paymentFacilitator:
           externalMerchantId: '12345'
@@ -4613,7 +5286,6 @@ components:
     PaymentMethod:
       description: Various payment methods the Gateway supports. Abstract class, do not use this class directly, use one of its children.
       type: object
-      x-hide-model: true
     PaymentMethodDetails:
       description: Provides details of the payment method used.
       properties:
@@ -4625,14 +5297,14 @@ components:
         paymentCard:
           number: '5424180279791732'
           expiryDate:
-            month: '12'
-            year: '25'
+            month: '03'
+            year: '21'
           securityCode: '977'
         paymentMethodType: 'PAYMENT_CARD'
     PaymentMethodType:
       description: Type of payment method.
       type: string
-      enum: [ALIPAY, ALIPAY_PAYSECURE_US, ALIPAY_DOMESTIC, APM, CUP_DOMESTIC, DEBITDE, EMI, GIROPAY, IDEAL, INDIAWALLET, KLARNA, KPS, NETBANKING, PAYMENT_CARD, PAYMENT_TOKEN, PAYPAL, SEPA, SOFORT, WALLET, WECHAT_DOMESTIC, TELECHECK, BLIK]
+      enum: [ALIPAY, ALIPAY_PAYSECURE_US, ALIPAY_DOMESTIC, APM, CUP_DOMESTIC, DEBITDE, EMI, GIROPAY, IDEAL, INDIAWALLET, KLARNA, KPS, NETBANKING, PAYMENT_CARD, PAYMENT_TOKEN, PAYPAL, SEPA, SOFORT, WALLET, WECHAT_DOMESTIC, TELECHECK]
       example: 'DEBITDE'
     PaymentCard:
       description: Payment card model.
@@ -4655,7 +5327,7 @@ components:
         cardFunction:
           $ref: '#/components/schemas/CardFunction'
         cardholderName:
-          description: Name of the cardholder. Note - Only supported with request payload.
+          description: Name of the cardholder.
           type: string
           maxLength: 96
           example: 'John Doe'
@@ -4674,12 +5346,11 @@ components:
       example:
         number: '5424180279791732'
         expiryDate:
-          month: '12'
-          year: '25'
+          month: '03'
+          year: '21'
         securityCode: '977'
     AuthenticationResult:
       description: Submit the result of 3DS authentication managed outside of the gateway. An AuthenticationResult should not be submitted within the same request as an AuthenticationRequest. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
       - authenticationType
       discriminator:
@@ -4934,7 +5605,6 @@ components:
         smsPhoneNumber: '86-13012345678'
     AuthenticationRequest:
       description: Request authentication of the payment card to verify the cardholder and be eligible for liability shift. An AuthenticationRequest should not be submitted with in the same request as an AuthenticationResult. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
         - authenticationType
       discriminator:
@@ -5105,6 +5775,7 @@ components:
       description: Model for the SEPA Mandate information.
       required:
         - reference
+        - url
         - signatureDate
         - type
       properties:
@@ -5115,7 +5786,7 @@ components:
           pattern: '[A-Za-z0-9:?/+(),. -]{1,35}'
           example: '3RBQVEE'
         url:
-          description: Valid URL pointing to the SEPA mandate (PDF / HTML format recommended). When your store is enabled for SEPA Direct Debit as part of the Local Payments offering, this field allows you to transmit a valid URL of SEPA Direct Debit mandate to enable the Risk and Compliance department to access the details. Please note that it is mandatory to submit a mandateReference and a mandateDate together with a mandateUrl in case you manage SEPA Direct Debit mandates on your side in the combination with the Local Payments offering.
+          description: Valid URL pointing to the SEPA mandate (PDF / HTML format recommended).
           type: string
           maxLength: 100
           pattern: '^(?!\s*$).+'
@@ -5492,6 +6163,8 @@ components:
       required:
         - accountNumber
         - expiration
+        - cryptogram
+        - eciIndicator
       properties:
         accountNumber:
           description: Payment card number.
@@ -5588,7 +6261,7 @@ components:
       description: Use this model to provide order related details.
       properties:
         orderId:
-          description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+          description: Client Order ID if supplied by client.
           type: string
           maxLength: 100
           example: 'ABC12345'
@@ -5602,8 +6275,6 @@ components:
           $ref: '#/components/schemas/PurchaseCards'
         installmentOptions:
           $ref: '#/components/schemas/InstallmentOptions'
-        revolvingOptions:
-          $ref: '#/components/schemas/RevolvingOptions'
         softDescriptor:
           $ref: '#/components/schemas/SoftDescriptor'
         additionalDetails:
@@ -5632,12 +6303,12 @@ components:
           maxLength: 96
           example: 'John Doe'
         firstName:
-          description: Billing first name. Note - Only supported for AMEX.
+          description: Billing first name.
           type: string
           maxLength: 48
           example: 'John'
         lastName:
-          description: Billing last name. Note - Only supported for AMEX.
+          description: Billing last name.
           type: string
           maxLength: 48
           example: 'Doe'
@@ -5889,8 +6560,8 @@ components:
           pickupDate: '2018-10-15'
         mcc6012:
           dateOfBirth: '20200505'
-          accountFirst6: '411111'
-          accountLast4: '2343'
+          accountFirst6: '546789'
+          accountLast4: '4567'
           accountNum: '546789900034567'
           postCode: '30101'
           surname: 'Walker'
@@ -6271,13 +6942,6 @@ components:
         installmentDelayMonths: 5
         recurringType: 'FIRST'
         merchantAdviceCodeSupported: true
-    RevolvingOptions:
-      description: Indicates the options for revolving payment.
-      properties:
-        revolvingPayment:
-          description: Indicates whether the payment has been chosen as revolving type.
-          type: boolean
-          example: true
     PurchaseCards:
       description: Purchase card details.
       properties:
@@ -6287,8 +6951,8 @@ components:
           properties:
             customerReferenceID:
               type: string
-              description: Customer code/customer reference ID. The max length supported for Visa is 12 and MasterCard is 17.
-              maxLength: 17
+              description: Customer code/customer reference ID.
+              maxLength: 20
               example: 'abcdef123xyz'
             supplierInvoiceNumber:
               type: string
@@ -6455,7 +7119,7 @@ components:
           $ref: '#/components/schemas/TransactionType'
         orderId:
           type: string
-          description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+          description: Client order ID if supplied by client, otherwise the order ID.
           example: '123456'
         billing:
           $ref: '#/components/schemas/Billing'
@@ -6495,8 +7159,6 @@ components:
           description: IPv4 or IPv6 network address.
           type: string
           example: '264.31.73.24'
-        revolvingOptions:
-          $ref: '#/components/schemas/RevolvingOptions'
       example:
         transactionAmount:
           total: '42.42'
@@ -6509,8 +7171,6 @@ components:
         invoiceNumber: '96126098'
         purchaseOrderNumber: '123055342'
         ip: '264.31.73.24'
-        revolvingOptions:
-          revolvingPayment: true
     PaymentUrlDetail:
       description: Detailed information about a payment URL.
       properties:
@@ -6525,7 +7185,7 @@ components:
             example: 'lsk23532djljff3'
         orderId:
             type: string
-            description: Note - Client Order ID if supplied by client. If not supplied by client, IPG will generate. The first 12 alphanumeric digits are passed down to Fiserv Enterprise reporting tool, Clientline and Data File Manager (DFM).
+            description: Client order ID if supplied by client, otherwise the order ID.
             example: '123456'
         requestTime:
             description: The transaction time in seconds since epoch.
@@ -6539,6 +7199,11 @@ components:
       type: string
       enum: [Created, Used, Expired, Cancelled]
       example: 'Created'
+    ConnectMode:
+      description: The type of connect mode.
+      type: string
+      enum: [Classic, Combined]
+      example: 'Classic'
     PaymentFacilitator:
       description: Payment facilitator details provided by the merchant.
       required:
@@ -6689,7 +7354,6 @@ components:
           country: 'USA'
     ExchangeRateRequest:
       description:  Request to perform an exchange rate inquiry. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
         - requestType
         - baseAmount
@@ -6914,7 +7578,6 @@ components:
         cRes: "ewogICAiYWNzUmVmZXJlbmNlTnVtYmVyIiA6ICJBQ1NFbXUyIiwKICAgImFjc1RyYW5zSUQiIDogIjAwMDAwMDAwLTAwMDUtNWE1YS04MDAwLTAxNmZhNTU2MzgzMiIsCiAgICJtZXNzYWdlVHlwZSIgOiAiQ1JlcyIsCiAgICJtZXNzYWdlVmVyc2lvbiIgOiAiMi4xLjAiLAogICAidGhyZWVEU1NlcnZlclRyYW5zSUQiIDogImRlZjlmYmQ4LWY5MzUtNWM3Mi04MDAwLTAwMDAwMDA4MjllZCIsCiAgICJ0cmFuc1N0YXR1cyIgOiAiWSIKfQ"
     AuthenticationUpdateRequest:
       description: Provides shared fields for all AuthenticationUpdateRequest types. Abstract class, do not use this class directly, use one of its children.
-      x-hide-model: true
       required:
         - authenticationType
       discriminator:
@@ -6969,10 +7632,9 @@ components:
     AccountInfoLookupRequest:
       description: Request to look up card-related information such as issuer country, card function and card brand associated with a payment card or payment token. Abstract class, do not use this class directly, use one of its children.
       type: object
-      x-hide-model: true
-      required:
+      required: 
         - requestType
-      discriminator:
+      discriminator: 
         propertyName: requestType
       properties:
         requestType:
@@ -7016,7 +7678,7 @@ components:
           requestType: 'PaymentTokenInfoLookupRequest'
           paymentToken:
             value: '4149011500000147'
-    CardInfoLookupResponse:
+    CardInfoLookupResponse: 
       description: Response from card info lookup request.
       allOf:
         - $ref: '#/components/schemas/BasicResponse'
@@ -7047,6 +7709,279 @@ components:
             issuerCountry: 'DE'
             issuerName: 'First National Bank of Omaha'
         requestStatus: 'SUCCESS'
+    StoreUrlConfigurationRequest: # store-management
+      description: Request to create or update notification and success/failure URLs for store.
+      properties:
+        stores:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreUrlConfiguration'
+          minItems: 1
+          example:
+            - id: '12099500088'
+              responseFailureUrl: 'https://www.firstdata.com/failure'
+              skipResultPageForSuccess: 'true'
+              skipResultPageForFailure: 'true'
+              overwriteUrlAllowed: 'false'
+            - id: '12099500044'
+              transactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+              recurringTransactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+              responseSuccessUrl: 'https://www.firstdata.com/success'
+      example:
+        stores:
+          - id: '12099500088'
+            transactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+            skipResultPageForFailure: 'true'
+            overwriteUrlAllowed: 'false'
+          - id: '12099500044'
+            transactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+            recurringTransactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+            responseSuccessUrl: 'https://www.firstdata.com/success'
+            skipResultPageForSuccess: 'false'
+            skipResultPageForFailure: 'true'
+            overwriteUrlAllowed: 'false'
+    UpdateFraudSettingsRequest: # store-management
+      description: Provide an information for fraud settings management.
+      properties:
+        stores:
+            type: array
+            items:
+              $ref: '#/components/schemas/StoreFraudSettings'
+      example:
+        stores:
+          - id: '12099500044'
+            fraudSettings:
+              blockedItems:
+                blockCard:
+                  cardNumber: '5424180279791758'
+                blockDomain:
+                  domain: 'co.uk'
+              maximumPurchaseAmount:
+                - currency: 'EUR'
+                  maxAmount: '5555'
+                - currency: 'USD'
+                  maxAmount: '7000'
+              lockoutTime:
+                autoLockoutTime: '4'
+                duplicateLockoutTime: '3'
+              countryProfile:
+                profile: '99'
+          - id: '12099500088'
+            fraudSettings:
+              blockedItems:
+                blockCard:
+                  cardNumber: '3124899279791740'
+                blockDomain:
+                  domain: 'co.net'
+              maximumPurchaseAmount:
+                - currency: 'EUR'
+                  maxAmount: '1555'
+                - currency: 'USD'
+                  maxAmount: '4555'
+              lockoutTime:
+                autoLockoutTime: '7'
+                duplicateLockoutTime: '8'
+              countryProfile:
+                profile: '99'
+    FraudSettingsResponse: # store-management
+      description: Response from fraud settings request.
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            storeId:
+              description: The outlet ID.
+              type: string
+              example: '12345500000'
+            blockedCardNumbers:
+              description: List of blocked card numbers.
+              type: array
+              items:
+                $ref: '#/components/schemas/BlockedCardNumber'
+              example:
+                - cardNumber: '542418...1745'
+                  tokenIdentifier: '06a569340ae1b8a60d1a961971f255b2ba35c03c8ea5660be6c253c0eb76e2dd'
+                - cardNumber: '542418...1746'
+                  tokenIdentifier: '06a569340ae1b8a60d1a961971f255b2ba3554258ea5660be6c253c0eb76e245'
+            blockedNames:
+              description: List of blocked fraud names.
+              type: array
+              items:
+                type: string
+              example: [name123, adhoc]
+            blockedDomainNames:
+              description: List of blocked fraud domain names.
+              type: array
+              items:
+                type: string
+              example: [co.uk, uk.net]
+            blockedIpOrClassCAddresses:
+              description: List of blocked fraud IP address/Class C.
+              type: array
+              items:
+                type: string
+              example: [123.56.78.88, 12.45.33.45]
+            maximumPurchaseAmount:
+              description: Maximum purchase amount limit.
+              type: array
+              items:
+                $ref: '#/components/schemas/MaximumPurchaseAmount'
+              example:
+                - currency: 'EUR'
+                  maxAmount: '7789'
+                - currency: 'USD'
+                  maxAmount: '5569'
+            lockoutTime:
+              $ref: '#/components/schemas/LockoutTime'
+            countryProfile:
+              description: Country profile.
+              type: string
+              example: 'All countries'
+      example:
+        storeId: '12345500000'
+        blockedCardNumbers:
+          - cardNumber: '542418...1745'
+            tokenIdentifier: '06a569340ae1b8a60d1a961971f255b2ba35c03c8ea5660be6c253c0eb76e2dd'
+          - cardNumber: '542418...1758'
+            tokenIdentifier: '570e66b0d4fd91b27155a36911220e0e98d0db7e22fcf0b86544fdf175c707d0'
+        maximumPurchaseAmount:
+          - currency: 'EUR'
+            maxAmount: '7789'
+          - currency: 'DKK'
+            maxAmount: '8888'
+        lockoutTime:
+          autoLockoutTime: '4'
+          duplicateLockoutTime: '3'
+        countryProfile: 'All countries'
+    UpdateFraudSettingsResponse: # store-management
+      description: Response from update fraud settings request.
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            stores:
+              type: array
+              items:
+                $ref: '#/components/schemas/StoreFraudSettingsResult'
+              example:
+                - id: '12345500000'
+                  blockedCardIdentifier:
+                    tokenIdentifier: '570e66b0d4fd91b27155a36911220e0e98d0db7e22fcf0b86544fdf175c707d0'
+                  status: 'SUCCESS. Fraud settings was updated successfully.'
+                - id: '1234550000044'
+                  blockedCardIdentifier:
+                    tokenIdentifier: '8535993dsrfs9898fssdfgddse9898fv9dfu8f98d0db7e22fcf0b86544fdf178'
+                  status: 'SUCCESS. Fraud settings was updated successfully.'
+      example:
+        stores:
+          - id: '12345500000'
+            blockedCardIdentifier:
+              tokenIdentifier: '570e66b0d4fd91b27155a36911220e0e98d0db7e22fcf0b86544fdf175c707d0'
+            status: 'SUCCESS. Fraud settings was updated successfully.'
+          - id: '1234550000044'
+            blockedCardIdentifier:
+              tokenIdentifier: '8535993dsrfs9898fssdfgddse9898fv9dfu8f98d0db7e22fcf0b86544fdf178'
+            status: 'SUCCESS. Fraud settings was updated successfully.'
+    RemoveFraudBlockedItemsResponse: # store-management
+      description: Response from remove fraud blocked items request.
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            status:
+              description: Status from delete fraud blocked items operation.
+              type: string
+              example: 'SUCCESS. Fraud settings was updated successfully.'
+      example:
+        clientRequestId: '2838649'
+        apiTraceId: 'ljklkjlkjasdflkjlkj123'
+        status: 'SUCCESS. Fraud settings was updated successfully.'
+    UpdateEmailSettingsRequest: # store-management
+      description: Provide an information for email settings.
+      required:
+        - stores
+      properties:
+        stores:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreEmailSettings'
+    StoreEmailSettings: # store-management
+      description: Object for email settings.
+      required:
+        - id
+        - emailNotificationData
+      properties:
+        id:
+          description: An outlet identificator.
+          type: string
+          example: '12345500000'
+        emailNotificationData:
+          $ref: '#/components/schemas/EmailNotificationData'
+      example:
+        id: '12345500000'
+        emailNotificationData:
+          enableNotification: true
+          merchantName: 'TELECASH 01'
+          receiverEmail: 'info@firstdata.com'
+          senderEmail: 'do-not-reply@ipg-online.com'
+          locale: 'en_GB'
+    EmailNotificationData:
+      description: Object that holds data to configure email notifications.
+      type: object
+      properties:
+        enableNotification:
+          description: Use this to enable/disable email notifications.
+          type: boolean
+          example: true
+        merchantName:
+          description: The merchant name to be displayed in the email to customer.
+          type: string
+          example: 'TELECASH 01'
+        receiverEmail:
+          description: The email address(es) for receiving transaction notifications.
+          type: string
+          example: 'info@firstdata.com'
+        senderEmail:
+          description: The email address for sending transaction notifications to customer.
+          type: string
+          example: 'do-not-reply@ipg-online.com'
+        locale:
+          description: The locale for received notifications.
+          type: string
+          example: 'en_GB'
+      example:
+    UpdateEmailSettingsResponse: # store-management
+      description: Response from update email settings request.
+      allOf:
+        - $ref: '#/components/schemas/BasicResponse'
+        - properties:
+            stores:
+              type: array
+              items:
+                $ref: '#/components/schemas/StoreEmailSettingsResult'
+              example:
+                - id: '12345500000'
+                  status: 'SUCCESS. Email settings was updated successfully.'
+                - id: '1234550000044'
+                  status: 'SUCCESS. Email settings was updated successfully.'
+      example:
+        stores:
+          - id: '12345500000'
+            status: 'SUCCESS. Email was updated successfully.'
+          - id: '1234550000044'
+            status: 'SUCCESS. Email was updated successfully.'
+    StoreEmailSettingsResult: # store-management
+      description: Object that holds result from update email settings request.
+      properties:
+        id:
+          description: An outlet identificator.
+          type: string
+          example: '12345500000'
+        status:
+          description: Status from email settings.
+          type: string
+          example: 'SUCCESS. Email was updated successfully.'
+      example:
+        id: '12345500000'
+        status: 'SUCCESS. Email was updated successfully.'
     CardInfo:
       description: Card information.
       properties:
@@ -7116,6 +8051,92 @@ components:
         deviceType: 'SWIPE'
         data: '02A600C0170018008292;5424********1732=1810?*B73CD8C26233D4FFEC5500ED394439D97DDA5F530942D21D0000000000000000000000000000000000000000363434543035353734326299492410027300000260DC03'
         securityCode: '977'
+    SharedSecretConfigurationRequest: # store-management
+      description: Request to create or update success/fail URLs for store.
+      required:
+      - sharedSecret
+      properties:
+        sharedSecret:
+          description: Shared secret/password for Connect.
+          type: string
+          pattern: "[^ ]{7,16}"
+          example: '6768tr457r'
+      example:
+        sharedSecret: '6768tr457r'
+    SharedSecretConfigurationResponse: # store-management
+      description: Response from a shared secret configuration request.
+      allOf:
+      - $ref: '#/components/schemas/BasicResponse'
+      - properties:
+          storeId:
+            description: An optional outlet ID for clients that support multiple stores in the same developer app.
+            type: string
+            example: '12345500000'
+          sharedSecret:
+            description: Shared secret/password for Connect.
+            type: string
+            example: '6768tr457r'
+          responseMessage:
+            description: The message/status received after updating shared secret service config.
+            type: string
+            example: 'SUCCESS'
+          responseTimestamp:
+            description: Response timestamp.
+            type: integer
+            format: int64
+            example: '1561035070'
+      example:
+        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
+        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
+        storeId: '12345500000'
+        sharedSecret: '6768tr457r'
+        responseCode: 'SUCCESS'
+        responseTime: '1561035070'
+    StoreUrlConfiguration: # store-management
+      required:
+        - id
+      properties:
+        id:
+          description: An optional outlet id for clients that support multiple stores in the same developer app.
+          type: string
+          example: '12345500000'
+        transactionNotificationUrl:
+          description:  Transaction notification URL for Connect.
+          type: string
+          example: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+        recurringTransactionNotificationUrl:
+          description: Recurring transaction notification URL for recurring payments.
+          type: string
+          example: 'https://ipg-dev-1.1dc.com/webshop/recurringTransactionNotification'
+        responseSuccessUrl:
+          description:  Response success URL for Connect.
+          type: string
+          example: 'https://www.firstdata.com/success'
+        responseFailureUrl:
+          description: Response failure URL for Connect.
+          type: string
+          example: 'https://www.firstdata.com/failure'
+        skipResultPageForSuccess:
+          description: Skip connect result page when transaction is approved.
+          type: boolean
+          example: 'true'
+        skipResultPageForFailure:
+          description: Skip connect result page when transaction is not approved.
+          type: boolean
+          example: 'false'
+        overwriteUrlAllowed:
+          description: Overwrite URLs in database by those from request.
+          type: boolean
+          example: 'true'
+      example:
+        id: '12099500044'
+        transactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/transactionNotification'
+        recurringTransactionNotificationUrl: 'https://ipg-dev-1.1dc.com/webshop/recurringTransactionNotification'
+        responseSuccessUrl: 'https://www.firstdata.com/success'
+        responseFailureUrl: 'https://www.firstdata.com/failure'
+        skipResultPageForSuccess: 'true'
+        skipResultPageForFailure: 'true'
+        overwriteUrlAllowed: 'false'
     AchResponse: # NA only
       description: ACH TeleCheck response.
       properties:
@@ -7466,20 +8487,6 @@ components:
           example: true
         exchangeRateDetails:
           $ref: '#/components/schemas/ExchangeRateDetails'
-    PaymentBrandResponse:
-      description: List of available brands of a store.
-      allOf:
-        - $ref: '#/components/schemas/BasicResponse'
-        - properties:
-            brands:
-              type: array
-              items:
-                description: This field contains the brand ID.
-                type: string
-      example:
-        clientRequestId: '30dd879c-ee2f-11db-8314-0800200c9a66'
-        apiTraceId: 'rrt-0bd552c12342d3448-b-ea-1142-12938318-7'
-        brands: [MASTERCARD, VISA, MAESTRO]
 #-----------------------------------------------------------------------------------------------
 # Start of Fraud Detect transaction changes. This section DOES NOT BELONG to the IPG source API.
 #-----------------------------------------------------------------------------------------------
