@@ -1,6 +1,4 @@
----
-title: Complete the Transaction
-author: jill.oliver@firstdata.com
+Complete the Transaction
 ---
 
 <span>When you click the <em>Continue</em> button, all your entries are validated. If pieces of information are missing or incorrect, the <em>Virtual Terminal</em> main page will reappear with an error message at the top and the incorrect or missing fields flagged with an error graphic. If this should occur, make the appropriate corrections to the fields, then click the <em>Continue</em> button again.<span>&nbsp;</span></span>
@@ -13,4 +11,4 @@ author: jill.oliver@firstdata.com
 
 > Return to [Performing a Virtual Terminal Transaction][1]
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/139
+ [1]: http://docs.firstdata.com/org/gateway/node/139

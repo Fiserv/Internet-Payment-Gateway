@@ -1,13 +1,9 @@
----
-title: Virtual Terminal
-author: jill.oliver@firstdata.com
+Virtual Terminal
 ---
 
 If you want to enter transactions manually, e.g. to take orders via phone or to run a Void or Return, our _Virtual Terminal_ is the ideal solution.
 
-<span>The <em>Virtual Terminal</em> is the main page which you will use for all your Sale, Authorise Only as well as Forced Ticket transactions and for creating Payment URLs that allow consumers to make the payment at a later point.</span>
-
-<img alt="Virtual Terminal" data-align="center" data-entity-type="file" data-entity-uuid="81c50481-f29d-4afd-91d8-d61161f32bd7" height="95" src="Virtual%20Terminal.png" width="586" /> 
+<span>The <em>Virtual Terminal</em> is the main page which you will use for all your Sale, Authorize Only as well as Forced Ticket transactions and for creating Payment URLs that allow consumers to make the payment at a later point.</span>
 
 <span>Since some of the other types of card transactions such as Completion and Return, need to look in the database to get order information, they have their own pages. Credit is a special transaction that not all users have access to, so it also has its own page.</span>
 
@@ -21,8 +17,8 @@ If you want to enter transactions manually, e.g. to take orders via phone or to 
 
 <span>&nbsp;<strong><em>Hover over to click the links within the steps to&nbsp;expand the detail:</em></strong></span>
 
-  1. <span><span><span>If using the product catalogue feature, <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/140">select items from the <em>Product Catalogue</em></a></span></span></span>
-  2. <span><span><span>Enter <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/141"><em>Order</em> Information</a></span></span></span>
+  1. <span><span><span>If using the product catalogue feature, <a href="http://docs.firstdata.com/org/gateway/node/140">select items from the <em>Product Catalogue</em></a></span></span></span>
+  2. <span><span><span>Enter <a href="http://docs.firstdata.com/org/gateway/node/141"><em>Order</em> Information</a></span></span></span>
   3. <span><span><span>Select <em>Credit Card</em> as the <em>Payment Method</em></span></span></span>
   4. [<span><span><span>Enter <em>Credit Card Information</em>, select <em>Transaction Type Sale</em></span></span></span>][1]
   5. <span><span><span>If needed, enter further optional fields</span></span></span> 
@@ -30,7 +26,7 @@ If you want to enter transactions manually, e.g. to take orders via phone or to 
       * [<span><span>Payment data for Direct Debit transactions</span></span>][3]
       * [<span>Generate a Payment URL</span>][4]
       * [<span>Shipping</span>][5]
-      * [<span>Instalments</span>][6]
+      * [<span>Installments</span>][6]
       * [<span>Recurring Payments</span>][7]
       * [<span>Comments</span>][8]
       * [<span>Additional Data Elements MCC 6012</span>][9]
@@ -41,15 +37,15 @@ If you want to enter transactions manually, e.g. to take orders via phone or to 
 
 &nbsp;
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/142
- [2]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/146
- [3]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/147
- [4]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/148
- [5]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/149
- [6]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/150
- [7]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/151
- [8]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/152
- [9]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/153
- [10]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/155
- [11]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/144
- [12]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/145
+ [1]: http://docs.firstdata.com/org/gateway/node/142
+ [2]: http://docs.firstdata.com/org/gateway/node/146
+ [3]: http://docs.firstdata.com/org/gateway/node/147
+ [4]: https://docs.firstdata.com/org/gateway/node/137
+ [5]: http://docs.firstdata.com/org/gateway/node/149
+ [6]: http://docs.firstdata.com/org/gateway/node/150
+ [7]: http://docs.firstdata.com/org/gateway/node/151
+ [8]: http://docs.firstdata.com/org/gateway/node/152
+ [9]: http://docs.firstdata.com/org/gateway/node/153
+ [10]: http://docs.firstdata.com/org/gateway/node/155
+ [11]: http://docs.firstdata.com/org/gateway/node/144
+ [12]: http://docs.firstdata.com/org/gateway/node/145

@@ -1,9 +1,7 @@
----
-title: Local Payments
-author: anna.kopylowicz@firstdata.de
+Local Payments
 ---
 
-_The following information is only relevant if you are using the First Data Local Payments solution._
+_The following information is only relevant if you are using Fiserv's Local Payments solution._
 
 A Sale transaction for most Local Payments requires a direct interaction with the consumer who needs to be redirected to the payment method’s screens (e.g. the login page of the consumer’s bank or a wallet provider) and back to your website after all required steps are completed.
 
@@ -27,7 +25,7 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        <strong>Comment</strong>
+        <strong><span lang="EN-US"><span>Description</span></span></strong>
       </td>
       
       <td>
@@ -37,7 +35,27 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        paymentMethod
+        <pre>
+checkoutoption</pre>
+      </td>
+      
+      <td>
+        &nbsp;
+      </td>
+      
+      <td>
+        <span lang="EN-US"><span>Set the value for this parameter to </span></span><span lang="EN-US"><span>‘combinedpage’ for a payment process where the payment method choice and the typical next step (e.g. entry of card details or selection of bank) in consolidated in a single page</span></span>
+      </td>
+      
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <pre>
+paymentMethod</pre>
       </td>
       
       <td>
@@ -45,7 +63,7 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        You can submit the parameter <em>paymentMethod</em> in your transaction request to determine the payment method to be used for the transaction. See possible values <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/55">here</a>.<br /> If you do not submit this parameter, the Gateway will display a page to your consumer to choose from the payment methods that are supported for the combination of the consumer’s country and the transaction currency.
+        You can submit the parameter <em>paymentMethod</em> in your transaction request to determine the payment method to be used for the transaction. See possible values <a href="http://docs.firstdata.com/org/gateway/node/55">here</a>.<br /> If you do not submit this parameter, the Gateway will display a page to your consumer to choose from the payment methods that are supported for the combination of the consumer’s country and the transaction currency.
       </td>
       
       <td>
@@ -55,7 +73,8 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        bname
+        <pre>
+bname</pre>
       </td>
       
       <td>
@@ -73,7 +92,8 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        bcountry
+        <pre>
+bcountry</pre>
       </td>
       
       <td>
@@ -91,7 +111,11 @@ As we handle all the required redirections to the various stakeholders for you, 
   </tbody>
 </table>
 
-### &nbsp;
+<span lang="EN-US">Many of the payment methods are available for customers coming from a certain country. In the scenarios where you use the hosted payment page for payment selection, the gateway can display to your consumers a hosted page with only these payment methods that are set up for your store and supported for the combination of the consumer’s country and the transaction currency. This validation is done either based on the submitted billing country (‘bcountry’) or the customer’s IP address.&nbsp;</span>
+
+<span lang="EN-US">See below an example of a hosted payment page in the checkout option ‘combinedpage’, where the country is pre-set to ‘Germany’ based on the customer’s IP address but still it can be changed via a dedicated drop-down, where else the payment methods are limited based on the combination country/currency.</span>
+
+<img alt="eg" data-align="center" data-entity-type="file" data-entity-uuid="39e5233a-feed-4ffc-bc4b-717c835c7889" height="361" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/connectup1.png" width="566" /> 
 
 ### Payment Method Specific Fields to be Considered for Local Payments
 
@@ -101,7 +125,7 @@ As we handle all the required redirections to the various stakeholders for you, 
   <tbody>
     <tr>
       <td>
-        <strong>Field </strong>
+        <strong>Field Name</strong>
       </td>
       
       <td>
@@ -109,25 +133,28 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        &nbsp;&nbsp;
+        &nbsp;
       </td>
       
       <td>
-        <strong>Comment</strong>
+        <span lang="EN-US"><span><strong>Description</strong></span></span>
       </td>
     </tr>
     
     <tr>
       <td>
-        nationalId
+        <pre>
+nationalId</pre>
       </td>
       
       <td>
-        Boleto Bancário (M)<br /> Santander (M)<br /> Santander Cash (M)
+        <p>
+          Boleto Bancário (M) Santander (M) Santander Cash (M)<br /> Trustly (O)
+        </p>
       </td>
       
       <td>
-        &nbsp;&nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       </td>
       
       <td>
@@ -137,15 +164,16 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        customerid
+        <pre>
+customerid</pre>
       </td>
       
       <td>
-        AstroPay Card (M)<br /> AstroPay Direct (M)<br /> Boleto Bancário (M)<br /> Entercash (M)<br /> Santander (M)<br /> Santander Cash (M)
+        Boleto Bancário (M)<br /> Santander (M)<br /> Santander Cash (M)<br /> Trustly (M)
       </td>
       
       <td>
-        &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
       </td>
       
       <td>
@@ -155,11 +183,12 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        email
+        <pre>
+email</pre>
       </td>
       
       <td>
-        Boleto Bancário (M)<br /> SEPA Direct Debit (M)<br /> Santander (M)<br /> Santander Cash (M)
+        Boleto Bancário (M)<br /> Przelewy24 (P24) (M)<br /> SEPA Direct Debit (M)<br /> Santander (M)<br /> Santander Cash (M)
       </td>
       
       <td>
@@ -173,11 +202,12 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        bbirthday
+        <pre>
+bbirthday</pre>
       </td>
       
       <td>
-        Boleto Bancário (O)<br /> Santander (O)<br /> Santander Cash (O)
+        Boleto Bancário (O)<br /> Santander (O)<br /> Santander Cash (O)&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
       </td>
       
       <td>
@@ -191,43 +221,8 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        bic&nbsp;
-      </td>
-      
-      <td>
-        Entercash (O)<br /> giropay (O)<br /> SOFORT Banking (O)
-      </td>
-      
-      <td>
-        &nbsp;
-      </td>
-      
-      <td>
-        Consumer’s BIC – Business Identifier Code (8 or 11 Digits)
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        iban
-      </td>
-      
-      <td>
-        Entercash (O)<br /> SEPA Direct Debit (M)
-      </td>
-      
-      <td>
-        &nbsp;
-      </td>
-      
-      <td>
-        Consumer’s IBAN - International Bank Account Number (22 Digits)
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        mandateDate
+        <pre>
+iban</pre>
       </td>
       
       <td>
@@ -239,13 +234,14 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        This field allows you to provide the date of the mandate and to reference to the date of the original mandate when performing recurring Direct Debit transactions. The date needs to be submitted in format YYYYMMDD.
+        Consumer’s IBAN - International Bank Account Number
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateReference
+        <pre>
+mandateDate</pre>
       </td>
       
       <td>
@@ -257,13 +253,41 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        This field allows you to transmit a Mandate Reference for Direct Debit payments. Please note the regulatory requisite to keep the Mandate Reference unambiguous.
+        <p>
+          This field allows you to provide the date of the mandate and to reference to the date of the original mandate when performing recurring Direct Debit transactions.&nbsp;<br /> The date needs to be submitted in format YYYYMMDD.
+        </p>
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateType
+        <pre>
+mandateReference  </pre>
+      </td>
+      
+      <td>
+        SEPA Direct Debit (M)
+      </td>
+      
+      <td>
+        &nbsp;
+      </td>
+      
+      <td>
+        <p>
+          This field allows you to transmit a Mandate Reference for Direct Debit payments.
+        </p>
+        
+        <p>
+          Please note the regulatory requisite to keep the Mandate Reference unambiguous.
+        </p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <pre>
+mandateType</pre>
       </td>
       
       <td>
@@ -281,7 +305,8 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        mandateUrl
+        <pre>
+mandateUrl</pre>
       </td>
       
       <td>
@@ -299,11 +324,12 @@ As we handle all the required redirections to the various stakeholders for you, 
     
     <tr>
       <td>
-        phone
+        <pre>
+mobileMode</pre>
       </td>
       
       <td>
-        QIWI (M)
+        <span lang="DE"><span><span>Alipay (O)</span></span></span>
       </td>
       
       <td>
@@ -311,41 +337,61 @@ As we handle all the required redirections to the various stakeholders for you, 
       </td>
       
       <td>
-        Consumer’s phone number
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-&nbsp;
-
-### Initiating a Return transaction&nbsp;
-
-In cases where Return transactions are supported for the selected payment method, you can initiate a Return transaction with a reference to the Transaction ID of the original Sale transaction.
-
-> Return
-
-&nbsp;
-
-### Options for SEPA Direct Debit
-
-When you manage SEPA Direct Debit mandates on your side you can use these in combination with the Local Payments offering by submitting the reference and date of the mandate as well as a link to the mandate itself. This is especially useful in cases where you have a large number of mandates on file from previously used solutions and want to continue to use these mandates.
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <strong>Field</strong>
-      </td>
-      
-      <td>
-        <strong>Description</strong>
+        <span lang="DE"><span><span>You can submit this parameter with the value ‘true’ to enable Alipay for mobile web.&nbsp;</span></span></span><span lang="EN-US"><span>i.e.: the mobile enabled variant of Alipay.</span></span>
       </td>
     </tr>
     
     <tr>
       <td>
-        email
+        <pre>
+language</pre>
+      </td>
+      
+      <td>
+        WeChat Pay (O)
+      </td>
+      
+      <td>
+        &nbsp;
+      </td>
+      
+      <td>
+        <span lang="EN-US"><span>Locale identifier for the payment page</span></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### &nbsp;
+
+### Initiating a Return transaction&nbsp;
+
+In cases where Return transactions are supported for the selected payment method, you can initiate a Return transaction with a reference to the Transaction ID of the original Sale transaction.
+
+> [Return][2]
+
+&nbsp;
+
+### Options for SEPA Direct Debit
+
+When you manage SEPA Direct Debit mandates on your side you can use these in combination with the Local Payments offering by submitting the reference and date of the mandate as well as a link to the mandate itself. This option is&nbsp;especially useful in cases where you have a large number of mandates on file from previously used solutions and want to continue to use these mandates.
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Field Name</strong>
+      </td>
+      
+      <td>
+        <strong><span lang="EN-US"><span>Description</span></span></strong>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <pre>
+email</pre>
       </td>
       
       <td>
@@ -355,29 +401,32 @@ When you manage SEPA Direct Debit mandates on your side you can use these in com
     
     <tr>
       <td>
-        iban
+        <pre>
+iban</pre>
       </td>
       
       <td>
-        Consumer’s IBAN - International Bank Account Number (22 Digits)
+        Consumer’s IBAN - International Bank Account Number
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateType
+        <pre>
+mandateType</pre>
       </td>
       
       <td>
         <p>
-          Sequence type of Direct Debit, defaults to ‘single’<br /> Values:<br /> single - Direct Debit is executed once<br /> firstCollection&nbsp; - First Direct Debit in a series of recurring<br /> recurringCollection – Follow-up Direct Debit in a series of recurring<br /> finalCollection – Last Direct Debit in a series of recurring
+          Sequence type of Direct Debit, defaults to ‘single’&nbsp;<br /> Values:<br /> single - Direct Debit is executed once<br /> firstCollection&nbsp; - First Direct Debit in a series of recurring<br /> recurringCollection – Follow-up Direct Debit in a series of recurring<br /> finalCollection – Last Direct Debit in a series of recurring
         </p>
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateReference
+        <pre>
+mandateReference</pre>
       </td>
       
       <td>
@@ -387,7 +436,8 @@ When you manage SEPA Direct Debit mandates on your side you can use these in com
     
     <tr>
       <td>
-        mandateDate
+        <pre>
+mandateDate</pre>
       </td>
       
       <td>
@@ -397,7 +447,8 @@ When you manage SEPA Direct Debit mandates on your side you can use these in com
     
     <tr>
       <td>
-        mandateUrl
+        <pre>
+mandateUrl</pre>
       </td>
       
       <td>
@@ -409,7 +460,7 @@ When you manage SEPA Direct Debit mandates on your side you can use these in com
 
 &nbsp;
 
-When you do not want to manage the SEPA Direct Debit mandates on your side, you can instead use the _out-of-box_ solution offered by First Data.
+When you do not want to manage the SEPA Direct Debit mandates on your side, you can use a solution where Fiserv handles the mandates for you. Upon receiving the valid transaction request, the gateway displays a hosted page to your customer with the mandate text and&nbsp;assigned mandate reference. As part of the gateway’s response, you receive the mandate reference and mandate date, which have to be used in case of the subsequent payments under this mandate.
 
 ##### Single Payment or First Payment in Recurring Series
 
@@ -417,17 +468,18 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
   <tbody>
     <tr>
       <td>
-        <strong>Field</strong>
+        <strong>Field Name</strong>
       </td>
       
       <td>
-        <strong>Description</strong>
+        <strong><span lang="EN-US"><span>Description</span></span></strong>
       </td>
     </tr>
     
     <tr>
       <td>
-        email
+        <pre>
+email</pre>
       </td>
       
       <td>
@@ -437,17 +489,19 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
     
     <tr>
       <td>
-        iban
+        <pre>
+iban</pre>
       </td>
       
       <td>
-        Consumer’s IBAN - International Bank Account Number (22 Digits)
+        Consumer’s IBAN - International Bank Account Number
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateType
+        <pre>
+mandateType   </pre>
       </td>
       
       <td>
@@ -471,13 +525,14 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
       </td>
       
       <td>
-        <strong>Description</strong>
+        <strong><span lang="EN-US"><span>Description</span></span></strong>
       </td>
     </tr>
     
     <tr>
       <td>
-        email
+        <pre>
+email</pre>
       </td>
       
       <td>
@@ -487,17 +542,19 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
     
     <tr>
       <td>
-        iban
+        <pre>
+iban</pre>
       </td>
       
       <td>
-        Consumer’s IBAN - International Bank Account Number (22 Digits)
+        Consumer’s IBAN - International Bank Account Number
       </td>
     </tr>
     
     <tr>
       <td>
-        mandateType
+        <pre>
+mandateType</pre>
       </td>
       
       <td>
@@ -509,7 +566,8 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
     
     <tr>
       <td>
-        mandateReference
+        <pre>
+mandateReference </pre>
       </td>
       
       <td>
@@ -519,7 +577,8 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
     
     <tr>
       <td>
-        mandateDate
+        <pre>
+mandateDate</pre>
       </td>
       
       <td>
@@ -529,4 +588,5 @@ When you do not want to manage the SEPA Direct Debit mandates on your side, you 
   </tbody>
 </table>
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/90
+ [1]: http://docs.firstdata.com/org/gateway/node/90
+ [2]: http://docs.firstdata.com/org/gateway/node/223

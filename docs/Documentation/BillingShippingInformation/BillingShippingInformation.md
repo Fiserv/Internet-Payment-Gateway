@@ -1,6 +1,4 @@
----
-title: Billing/Shipping Information 
-author: steffen.dangel@firstdata.de
+Billing/Shipping Information 
 ---
 
 If you post a HTML form to initiate the payment, you can include billing and shipping information in your request by using the following fields. Some of these fields are mandatory for specific alternative payment methods or relevant for fraud prevention purpose.
@@ -34,7 +32,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
   <tbody>
     <tr>
       <td>
-        bcompany
+        <pre>
+bcompany </pre>
       </td>
       
       <td>
@@ -42,13 +41,14 @@ If you post a HTML form to initiate the payment, you can include billing and shi
       </td>
       
       <td>
-        Customer's company name. Alphanumeric characters, spaces and dashes.
+        Customer's company name. Alphanumeric characters, spaces and dashes limited to 96.
       </td>
     </tr>
     
     <tr>
       <td>
-        bname
+        <pre>
+bname</pre>
       </td>
       
       <td>
@@ -56,13 +56,14 @@ If you post a HTML form to initiate the payment, you can include billing and shi
       </td>
       
       <td>
-        Customer's name. Alphanumeric characters, spaces and dashes.
+        Customer's name. Alphanumeric characters, spaces and dashes limited to 96.
       </td>
     </tr>
     
     <tr>
       <td>
-        baddr1
+        <pre>
+baddr1</pre>
       </td>
       
       <td>
@@ -76,7 +77,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        baddr2
+        <pre>
+baddr2</pre>
       </td>
       
       <td>
@@ -90,7 +92,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        bcity
+        <pre>
+bcity</pre>
       </td>
       
       <td>
@@ -104,7 +107,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        bstate
+        <pre>
+bstate</pre>
       </td>
       
       <td>
@@ -118,7 +122,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        bcountry
+        <pre>
+bcountry</pre>
       </td>
       
       <td>
@@ -132,7 +137,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        bzip
+        <pre>
+bzip</pre>
       </td>
       
       <td>
@@ -146,7 +152,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        phone
+        <pre>
+phone</pre>
       </td>
       
       <td>
@@ -160,7 +167,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        fax
+        <pre>
+fax</pre>
       </td>
       
       <td>
@@ -174,7 +182,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        email
+        <pre>
+email</pre>
       </td>
       
       <td>
@@ -210,7 +219,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        sname
+        <pre>
+sname</pre>
       </td>
       
       <td>
@@ -218,13 +228,14 @@ If you post a HTML form to initiate the payment, you can include billing and shi
       </td>
       
       <td>
-        Ship-to name. Alphanumeric characters, spaces and dashes.
+        Ship-to name. Alphanumeric characters, spaces and dashes limited to 96.
       </td>
     </tr>
     
     <tr>
       <td>
-        saddr1
+        <pre>
+saddr1</pre>
       </td>
       
       <td>
@@ -238,7 +249,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        saddr2
+        <pre>
+saddr2</pre>
       </td>
       
       <td>
@@ -252,7 +264,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        scity
+        <pre>
+scity</pre>
       </td>
       
       <td>
@@ -266,7 +279,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        sstate
+        <pre>
+sstate</pre>
       </td>
       
       <td>
@@ -280,7 +294,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        scountry
+        <pre>
+scountry</pre>
       </td>
       
       <td>
@@ -294,7 +309,8 @@ If you post a HTML form to initiate the payment, you can include billing and shi
     
     <tr>
       <td>
-        szip
+        <pre>
+szip</pre>
       </td>
       
       <td>
@@ -308,5 +324,5 @@ If you post a HTML form to initiate the payment, you can include billing and shi
   </thead>
 </table>
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/docs/api#billing
- [2]: http://test-ndpfdc.pantheonsite.io/org/gateway/docs/api#shipping
+ [1]: http://docs.firstdata.com/org/gateway/docs/api#billing
+ [2]: http://docs.firstdata.com/org/gateway/docs/api#shipping

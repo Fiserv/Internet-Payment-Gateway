@@ -1,6 +1,4 @@
----
-title: Review the Results
-author: jill.oliver@firstdata.com
+Review the Results
 ---
 
 <span>The result screen will contain all the information you entered, plus an extra section at the top called <em>Transaction Information</em>.</span>
@@ -11,6 +9,6 @@ author: jill.oliver@firstdata.com
 
 &nbsp;
 
-<span>> <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/139">Return to Performing a Virtual Terminal Transaction</a></span>
+<span>> <a href="http://docs.firstdata.com/org/gateway/node/139">Return to Performing a Virtual Terminal Transaction</a></span>
 
 <span>&nbsp;</span>

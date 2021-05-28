@@ -1,9 +1,7 @@
----
-title: Response Codes
-author: anna.kopylowicz@firstdata.de
+Response Codes
 ---
 
-###<img alt="Result Code" data-entity-type="file" data-entity-uuid="db9127dc-38a6-46f3-93ad-f7108684b784" src="resultcode.png" /> 
+###<img alt="Result Code" data-entity-type="file" data-entity-uuid="db9127dc-38a6-46f3-93ad-f7108684b784" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/resultcode.png" /> 
 
 ### &nbsp;
 
@@ -198,7 +196,7 @@ whereas the letters indicate:
 
 ### &nbsp;
 
-### Most Common Card Processing Response Codes
+### Most Common&nbsp;Response Codes
 
 <table>
   <tbody>
@@ -272,6 +270,84 @@ whereas the letters indicate:
     
     <tr>
       <td>
+        -5003
+      </td>
+      
+      <td>
+        The order is already existing in the database.
+      </td>
+      
+      <td>
+        <p>
+          <span lang="EN-US"><span><span>N:-5003:The order already exists in the database.</span></span></span>
+        </p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        -5005
+      </td>
+      
+      <td>
+        Cardholder submitted the transaction more than once during the 'duplicate lockout' window of time set. (eg: by pressing submit twice)
+      </td>
+      
+      <td>
+        <span><span><span>N:-5005:FRAUD - Duplicate lockout</span></span></span>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        -5101
+      </td>
+      
+      <td>
+        3D Secure authentication failed (eg: cardholder entered incorrect password)
+      </td>
+      
+      <td>
+        <p>
+          <span lang="EN-US"><span><span>N:-5101:3D Secure authentication failed</span></span></span>
+        </p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        -5103
+      </td>
+      
+      <td>
+        <span><span><span><span><span><span><span>Cardholder did not return from Access Control Server redirection.&nbsp; (ACS - issuer component of 3D Secure)</span></span></span></span></span></span></span>
+      </td>
+      
+      <td>
+        <p>
+          <span><span><span lang="EN-US">N:-5103:Cardholder did not return from ACS</span></span></span>
+        </p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        -5104
+      </td>
+      
+      <td>
+        <span><span><span><span><span><span><span>Cardholder did not return from PayPal redirection.</span></span></span></span></span></span></span>
+      </td>
+      
+      <td>
+        <p>
+          <span><span><span lang="EN-US">N:-5104:Cardholder did not return from PayPal</span></span></span>
+        </p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
         <p>
           <span><span><span><span><span><span><span>-5993</span></span></span></span></span></span></span>
         </p>
@@ -292,7 +368,9 @@ whereas the letters indicate:
   </tbody>
 </table>
 
-### &nbsp;
+For a list of response codes specific to your authorisation platform please [click here][1]
+
+&nbsp;
 
 ### Response Codes Related to Configuration Issues
 
@@ -444,7 +522,7 @@ whereas the letters indicate:
 
 &nbsp;
 
-### Response Codes Related to First Data Local Payments
+### Response Codes Related to Fiserv Local Payments
 
 <table>
   <tbody>
@@ -490,6 +568,20 @@ whereas the letters indicate:
     
     <tr>
       <td>
+        -P00001
+      </td>
+      
+      <td>
+        Cardholder cancelled the payment.
+      </td>
+      
+      <td>
+        <span lang="EN-US"><span><span>N:-P00001:Cancelled by user</span></span></span>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
         <p>
           <span><span><span><span><span><span><span>INPUT_DATA</span></span></span></span></span></span></span>
         </p>
@@ -530,10 +622,16 @@ whereas the letters indicate:
   </tbody>
 </table>
 
+### &nbsp;
+
+### Authorisation Platform Specific Response Codes
+
+For a list of response codes specific to your authorisation platform please [click here][1]
+
+&nbsp;
+
 &nbsp;
 
 ### &nbsp;
 
-&nbsp;
-
-### &nbsp;
+ [1]: https://docs.firstdata.com/org/gateway/node/483

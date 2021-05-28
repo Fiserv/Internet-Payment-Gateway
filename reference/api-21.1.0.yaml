@@ -1,7 +1,7 @@
 openapi: 3.0.2
 #
 info:
-  version: 21.1.0.20210122.001
+  version: 21.1.0
   title: Payment Gateway API Specification.
   description: "The documentation here is designed to provide all of the technical guidance required to consume and integrate with our APIs for payment processing. To learn more about our APIs please visit https://docs.firstdata.com/org/gateway."
 servers:
