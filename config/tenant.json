@@ -57,12 +57,14 @@
     {
       "version": "21.1.0",
       "versionType": "minor",
-      "releaseNotesPath": "/release-notes/release-notes-21.1.0.md"
+      "releaseNotesPath": "/release-notes/release-notes-21.1.0.md",
+      "apiSpecFileNames": ["api-21.1.0"]
     },
     {
       "version": "21.2.0",
       "versionType": "major",
-      "releaseNotesPath": "/release-notes/release-notes-21.2.0.md"
+      "releaseNotesPath": "/release-notes/release-notes-21.2.0.md",
+      "apiSpecFileNames": ["api-21.2.0"]
     }
   ],
   "product": {
