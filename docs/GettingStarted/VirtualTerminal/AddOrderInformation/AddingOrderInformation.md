@@ -1,13 +1,11 @@
----
-title: Adding Order Information 
-author: jill.oliver@firstdata.com
+Adding Order Information 
 ---
 
 <span>The <em>Order Information</em> section has only one required field: the total amount of the order (including all taxes and shipping). Other fields in the section are optional and can be used at your discretion. </span>
 
 <span>You must fill out all required fields. To enter <em>Order Information</em>, follow the steps below.</span>
 
-<img alt="Order Information" data-align="center" data-entity-type="file" data-entity-uuid="3422b2f4-229b-4d9c-baea-9fcc84a863d6" height="245" src="Order%20info.png" width="655" /> 
+<img alt="OrderInfo" data-align="center" data-entity-type="file" data-entity-uuid="f7fd20e7-3e2b-421d-b509-851b386db505" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/OrderInfo_0.png" /> 
 
 **_<span>Order Number (optional)</span>_**
 
@@ -53,5 +51,5 @@ author: jill.oliver@firstdata.com
 
 > Return to ****[Performing a Virtual Terminal Transaction][2]
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/142
- [2]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/139
+ [1]: http://docs.firstdata.com/org/gateway/node/142
+ [2]: http://docs.firstdata.com/org/gateway/node/139

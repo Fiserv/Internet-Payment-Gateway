@@ -1,5 +1,3 @@
-
-
 ## First Data Gateway
 
 &nbsp;
@@ -56,4 +54,3 @@ Choose the type of your project to get quickly to what you need.
 
 > [Go directly to our API reference](../api?type=post&path=/authentication/access-tokens)  
 > [Check out other First Data developer resources](?path=docs/getting-started.md)
-

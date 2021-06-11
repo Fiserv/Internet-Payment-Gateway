@@ -1,6 +1,4 @@
----
-title: Selecting Products from your Product Catalogue
-author: jill.oliver@firstdata.com
+Selecting Products from your Product Catalogue
 ---
 
 <span>The Virtual Terminal offers you the timesaving ability to choose items from your product catalogue every time you process an order. To enable this feature, you first need to enter your product catalogue using the <em>Manage your Product Catalogue</em> function in the <em>Customisation</em> section. For every product you have entered, you can click on <em>Edit</em> to add options (e. g. colour, size etc.). Once you've done that, simply go to the <em>Virtual Terminal </em>main page and click on the <em>Select Products</em> button to select products for this order. The <em>Product Catalogue</em> page will appear.</span>
@@ -25,16 +23,16 @@ author: jill.oliver@firstdata.com
 
 <span>Once you've completed your product selections, click on the <em>POS Main</em> button to return to the <em>Virtual Terminal</em> main page, where you can enter payment and contact information for this order.<br /> A table should appear at the top of the page showing all the products selected for this order along with the subtotal of the order. </span>
 
-<img alt="Product Selected From the Product Catalogue" data-align="center" data-entity-type="file" data-entity-uuid="2fa099d4-b2ee-4c5b-9ce1-184a024176b3" height="398" src="Product%20catalogue.png" width="635" /> 
+<img alt="catalog" data-align="center" data-entity-type="file" data-entity-uuid="8c1b0389-bdaa-4e8d-bdc4-f79987ba0417" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/catalog.png" /> 
 
-_<span>Virtual Terminal: Products selected from Product Catalogue</span>_
+_<span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Virtual Terminal: Products selected from Product Catalogue</span>_
 
 <span>If any of the product selections should change before you've submitted the order, you can return to change your product selections by clicking on the <em>Select Products </em>button again.</span>
 
 &nbsp;
 
-<span>> Move on to <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/141">Order Information</a></span>
+<span>> Move on to <a href="http://docs.firstdata.com/org/gateway/node/141">Order Information</a></span>
 
-<span>> Return to <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/139">Performing a Virtual Terminal Transaction</a></span>
+<span>> Return to <a href="http://docs.firstdata.com/org/gateway/node/139">Performing a Virtual Terminal Transaction</a></span>
 
 &nbsp;

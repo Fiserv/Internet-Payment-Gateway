@@ -1,11 +1,11 @@
----
-title: Hosted Payment Pages
-author: steffen.dangel@firstdata.de
+Hosted Payment Pages
 ---
 
 If you want to fully outsource the payment process in order not to have any sensitive cardholder data on your systems, you can use our ready-made hosted pages for your customers to enter their payment information.
 
 The hosted pages show your merchant name at the top and allow you to display a summary of the purchased items to your customer.
+
+<img alt="hostedpage-option" data-align="center" data-entity-type="file" data-entity-uuid="8b451e8f-96c5-4cc3-ae24-5c324b835aaf" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/hostedpage-option.png" /> 
 
 ### Required Fields
 
@@ -39,7 +39,7 @@ In addition to the [fields that are mandatory for every payment request][1] that
       </td>
       
       <td>
-        For the hosted payment page integration, set the value for this parameter to <em>combinedpage</em>
+        For a standard hosted payment page integration, set the value for this parameter to <em>combinedpage</em>
       </td>
     </tr>
   </tbody>
@@ -58,7 +58,7 @@ If you do not want to let your customer select the payment method on the hosted 
 
 &nbsp;
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/90
- [2]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/55
- [3]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/212
- [4]: http://test-ndpfdc.pantheonsite.io/org/gateway/node/224
+ [1]: https://docs.firstdata.com/org/gateway/node/321
+ [2]: http://docs.firstdata.com/org/gateway/node/55
+ [3]: http://docs.firstdata.com/org/gateway/node/212
+ [4]: http://docs.firstdata.com/org/gateway/node/224

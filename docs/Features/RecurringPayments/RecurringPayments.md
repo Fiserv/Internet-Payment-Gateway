@@ -1,6 +1,4 @@
----
-title: Recurring Payments
-author: adriana.vas@firstdata.de
+Recurring Payments
 ---
 
   
@@ -11,6 +9,8 @@ Recurring payments can either be triggered by your system everytime a payment is
 ## Triggering Recurring Payments
 
 When triggering Recurring Payments through our [API][1], you need to indicate if the transaction you are sending is the first in series or a subsequent transaction.
+
+> [How to process&nbsp;recurring payments with stored credentials][2]
 
 &nbsp;
 
@@ -26,7 +26,7 @@ Schedule recurring payments using our API
 The action RecurringPayment allows you to install, modify or cancel periodic payments in a way that  
 subsequent transactions will automatically be triggered by the gateway.
 
-For every recurring transaction, the gateway can send a server-to-server transaction notification to a  
+For every recurring transaction, the gateway can send a [server-to-server transaction notification][3] to a  
 defined Notification URL. Please contact your local support team to get your URL registered for these  
 notifications.
 
@@ -216,4 +216,6 @@ The Recurring Payments section in the Virtual Terminal allows you to make a cred
 
 &nbsp;
 
- [1]: http://test-ndpfdc.pantheonsite.io/org/gateway/docs/api
+ [1]: http://docs.firstdata.com/org/gateway/docs/api
+ [2]: https://docs.firstdata.com/org/gateway/node/1514
+ [3]: http://docs.firstdata.com/org/gateway/node/315

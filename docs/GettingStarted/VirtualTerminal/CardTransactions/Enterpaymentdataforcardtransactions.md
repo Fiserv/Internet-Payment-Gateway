@@ -1,13 +1,11 @@
----
-title: Enter payment data for card transactions
-author: jill.oliver@firstdata.com
+Enter payment data for card transactions
 ---
 
 <span>The <em>Payment Details</em> section shows fields required for a Sale, Authorise Only, Forced Ticket or <em>Account authorization</em> transaction.</span>
 
 <span>A graphic for each card type that has been setup for your store is shown.</span>
 
-<img alt="Card Details" data-align="center" data-entity-type="file" data-entity-uuid="3cb1eba1-fccc-4ef6-8dd8-c3b5e3a4f498" height="254" src="Card%20info.png" width="633" /> 
+<img alt="cardinfo" data-align="center" data-entity-type="file" data-entity-uuid="5ddb8715-55ee-4b1f-8ff6-b2afb7b24c7d" src="https://raw.githubusercontent.com/Fiserv/Internet-Payment-Gateway/develop/assets/images/cardInfo.png" /> 
 
 <span><em><span>Virtual Terminal: Card data input fields<span>&nbsp;</span></span></em></span>
 
@@ -27,11 +25,14 @@ author: jill.oliver@firstdata.com
 
   * <span><span><span><span>Select <em>Retail</em> (face to face) if the customer and the card are in your presence. </span></span></span></span>
   * <span><span><span><span>Select <em>Electronic Commerce</em> (internet) if the order came to you over the Internet or<br /> via e-mail.</span></span></span></span>
-  * <span><span><span><span>If you received the order over the phone or through the mail, select <em>Mail Order/Telephone Order</em>.</span></span></span></span>
+  * <span>Select <em>Mail Order* </em>if you received the order through the mail</span>
+  * <span>Select <em>Telephone Order </em>if you received the order over the phone.</span>
 
-_<span>&nbsp;</span>_
+&nbsp;
 
-_<span>Transaction Origin</span>_ <span>is always a required field therefore you must make a selection.</span>
+<span><em><span>Transaction Origin</span></em><span> is always a required field therefore you must make a selection.</span></span>
+
+<span><span>*To comply with scheme requirements, when <em>Mail Order</em> is selected the <em>Card Security Code</em> field will become inactive and there will be no option to enter one.</span></span>
 
 <span>&nbsp;</span>
 
@@ -66,7 +67,7 @@ _<span>Transaction Type</span>_ <span>is always a required field, but if you do 
 
 <span>If something should go wrong and this field does not fill in when you swipe the card, check your reader to make sure it's configured correctly. If the reader is configured correctly and you are still unable to swipe the card, the card may be unreadable. Go to the previous field (<em>Are you swiping the card?</em>), uncheck the <em>Yes</em> checkbox, and enter the card data manually.</span>
 
-<span>Note: If your store has been activated for GlobalChoice™ please click <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/57"><em><strong>here</strong></em></a> for further information.</span>
+<span>Note: If your store has been activated for GlobalChoice™ please click <a href="http://docs.firstdata.com/org/gateway/node/57"><em><strong>here</strong></em></a> for further information.</span>
 
 &nbsp;
 
@@ -100,8 +101,8 @@ _<span>Transaction Type</span>_ <span>is always a required field, but if you do 
 
 &nbsp;
 
-<span>> Return to <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/139">Performing a Virtual Terminal Transaction</a></span>
+<span>> Return to <a href="http://docs.firstdata.com/org/gateway/node/139">Performing a Virtual Terminal Transaction</a></span>
 
-<span>> Move on to <a href="http://test-ndpfdc.pantheonsite.io/org/gateway/node/144">Complete the Transaction</a></span>
+<span>> Move on to <a href="http://docs.firstdata.com/org/gateway/node/144">Complete the Transaction</a></span>
 
 <span>&nbsp;</span>
