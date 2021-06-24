@@ -3,7 +3,7 @@
   "name": "IPG",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/tomeck/transactionenrichmentstoplight/main/docs/carat_logo.png",
-  "solution": "Payments",
+  "solution": "enterpriseMerchant",
   "brandDescription": "Our powerful omnichannel commerce solutions help companies reach untapped markets and expand globally without being limited by borders, currencies or old ways of thinking. Carat's single-source commerce engine makes the process seamless, effortless, and secure. We've unified our suite of solutions into a powerful tech ecosystem so you can create commerce.\n      Carat's single-source commerce engine makes the process seamless, effortless, and secure. We've unified our suite of solutions into a powerful tech ecosystem so you can create commerce. Carat's single-source commerce engine makes the process seamless, effortless, and secure. We've unified our suite of solutions into a powerful tech ecosystem so you can create commerce.",
   "categories": [
     {
@@ -57,12 +57,14 @@
     {
       "version": "21.1.0",
       "versionType": "minor",
-      "releaseNotesPath": "/release-notes/release-notes-21.1.0.md"
+      "releaseNotesPath": "/release-notes/release-notes-21.1.0.md",
+      "apiSpecFileNames": ["api-21.1.0"]
     },
     {
       "version": "21.2.0",
       "versionType": "major",
-      "releaseNotesPath": "/release-notes/release-notes-21.2.0.md"
+      "releaseNotesPath": "/release-notes/release-notes-21.2.0.md",
+      "apiSpecFileNames": ["api-21.2.0"]
     }
   ],
   "product": {
@@ -78,7 +80,7 @@
     "feature":[
       {
         "name": "sandBox",
-        "value": false
+        "value": true
       },
       {
         "name": "plugins",
